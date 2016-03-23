@@ -1,0 +1,18 @@
+﻿@model RequestStatus?
+@{
+    var values = Enum.GetNames(typeof(RequestStatus));
+    IEnumerable<SelectListItem> items = new List<SelectListItem>()
+    {
+        new SelectListItem() { Value = "", Text = Resources.NotSpecified, Selected = this.Model == null }
+    };
+    items = items.Union(values.Select(value => 
+    {
+        return new SelectListItem() 
+        {
+            Text = RequestStatusStrings.ResourceManager.GetString(value),
+            Value = value,
+            Selected = (this.Model != null) && this.Model.ToString() == value
+        };
+    }));
+}
+@Html.DropDownList("", items, ViewData["htmlAttributes"])

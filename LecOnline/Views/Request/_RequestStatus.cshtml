@@ -1,0 +1,6 @@
+﻿@model int
+@{
+    var status = (RequestStatus)this.Model;
+    var statusString = RequestStatusStrings.ResourceManager.GetString(status.ToString());
+}
+@statusString

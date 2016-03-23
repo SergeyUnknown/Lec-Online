@@ -1,0 +1,61 @@
+﻿@model WebGrid
+@{
+    var grid = Model;
+    var initialElements = 1 + grid.PageIndex * grid.RowsPerPage;
+    var lastElementCount = (grid.PageIndex + 1) * grid.RowsPerPage;
+    var firstPageToShow = Math.Max(grid.PageIndex - 2, 0);
+    var lastPageToShow = Math.Min(grid.PageIndex + 2, grid.PageCount - 1);
+    var prevPageLink = grid.PageIndex <= 0 ? "#" : grid.GetPageUrl(grid.PageIndex - 1);
+    var nextPageLink = grid.PageIndex >= grid.PageCount - 1 ? "#" : grid.GetPageUrl(grid.PageIndex + 1);
+}
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            $("[name=pagesize]").change(function () {
+                var loc = window.location;
+                var data = loc.protocol + "//" + loc.host + loc.pathname;
+                loc.replace(data + "?" + jQuery.param({ PageSize: $(this).val() }));
+            });
+        });
+    </script>
+    <div class="row">
+        <div class="col-xs-1">
+            <div class="dataTables_length" id="dynamic-table_length">
+                @{
+                    var items = new SelectListItem[] {
+                        new SelectListItem() { Text = "10", Value = "10", Selected = grid.RowsPerPage == 10 },
+                        new SelectListItem() { Text = "20", Value = "20", Selected = grid.RowsPerPage == 20 },
+                        new SelectListItem() { Text = "25", Value = "25", Selected = grid.RowsPerPage == 25 },
+                        new SelectListItem() { Text = "50", Value = "50", Selected = grid.RowsPerPage == 50 },
+                        new SelectListItem() { Text = "100", Value = "100", Selected = grid.RowsPerPage == 100 },
+                    };  
+                }
+                @Html.DropDownList("pagesize", items, new { @class = "form-control input-sm" })
+            </div>
+        </div>
+        <div class="col-xs-7">
+            <div class="dataTables_info" role="status" aria-live="polite">
+                @string.Format(Resources.ShowingEntries, initialElements, lastElementCount, grid.TotalRowCount)
+            </div>
+        </div>
+        <div class="col-xs-4">
+            @if (grid.PageCount > 1)
+            {
+            <div class="dataTables_paginate paging_simple_numbers">
+                <ul class="pagination">
+                    <li class="paginate_button previous @(grid.PageIndex <= 0 ? "disabled" : string.Empty)" tabindex="0">
+                        <a href="@prevPageLink">@Resources.Previous</a>
+                    </li>
+                    @for (var i = firstPageToShow; i <= lastPageToShow; i++)
+                    {
+                        <li class="paginate_button @(i == grid.PageIndex ? "active" : string.Empty)" tabindex="0">
+                            <a href="@grid.GetPageUrl(i)">@(i + 1)</a>
+                        </li>
+                    }
+                    <li class="paginate_button next @(grid.PageIndex >= grid.PageCount - 1 ? "disabled" : string.Empty)" tabindex="0">
+                        <a href="@nextPageLink">@Resources.Next</a>
+                    </li>
+                </ul>
+            </div>
+            }
+        </div>
+    </div>

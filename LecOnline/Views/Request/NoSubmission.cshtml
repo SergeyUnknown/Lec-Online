@@ -1,0 +1,15 @@
+﻿@model Request
+@{
+}
+<div class="page-header">
+    <h1>
+        @Resources.PageRequestsTitle
+        <small>
+            <i class="ace-icon fa fa-angle-double-right"></i>
+            @Resources.PageAllRequestsTitle
+        </small>
+    </h1>
+</div>
+<h2 class="text-danger">@Resources.NoSubmissionForRequest</h2>
+
+@Html.ActionLink(Resources.UploadFiles, "Edit", new { id = this.Model.Id }, new { @class = "btn btn-default" })

@@ -1,0 +1,165 @@
+﻿@using Microsoft.AspNet.Identity.Owin
+@using LecOnline.Models
+@using LecOnline.Core
+@using LecOnline.Models.User
+@model UsersListViewModel
+@{
+    var context = this.Context.GetOwinContext();
+    var sidebarManager = context.Get<SidebarManager>();
+    var userItem = sidebarManager.FindById("Users");
+    userItem.IsOpen = true;
+    userItem.IsActive = true;
+    var allUserItem = sidebarManager.FindById("Users.All");
+    allUserItem.IsActive = true;
+
+    int pageSize = UIConfiguration.PageSize;
+    if (!int.TryParse(Request["PageSize"], out pageSize))
+    {
+        pageSize = UIConfiguration.PageSize;
+    }
+
+    var grid = new WebGrid(this.Model.Users,
+        rowsPerPage: pageSize,
+        defaultSort: "LastName");
+    var userManager = context.Get<ApplicationUserManager>();
+    var coreContext = context.Get<LecOnlineDbEntities>();
+}
+<div class="page-header">
+    <h1>
+        @Resources.PageUsersTitle
+        <small>
+            <i class="ace-icon fa fa-angle-double-right"></i>
+            @Resources.PageAllUsersTitle
+        </small>
+    </h1>
+</div>
+<div class="row">
+    <div class="col-sm-1">
+
+        <a href="@Url.Action("Create")" class="btn btn-sm btn-primary">
+            <i class="ace-icon fa fa-plus align-top bigger-125"></i>
+            @Resources.Create
+        </a>
+    </div>
+    <div class="col-sm-11">
+        @using (Html.BeginForm("Index", "User", FormMethod.Get, new { @class = "form-inline" }))
+        {
+            @Html.EditorFor(_ => _.Filter)
+            <button type="submit" class="btn btn-default">@Resources.Filter</button>
+        }
+    </div>
+</div>
+<div class="hr hr-dotted hr-16"></div>
+<div class="dataTables_wrapper">
+    <table class="table table-striped table-bordered table-hover dataTable">
+        <thead>
+            <tr>
+                <th class="sorting">
+                    <a href="@grid.GetSortUrl("Email")">
+                        @Resources.FieldEmail
+                    </a>
+                </th>
+                <th class="sorting">
+                    <a href="@grid.GetSortUrl("LastName")">
+                        @Resources.FieldFullName
+                    </a>
+                </th>
+
+                @if (Model.DisplayClients)
+                {
+                    <th class="sorting">
+                        <a href="@grid.GetSortUrl("ClientId")">
+                            @Resources.FieldClient
+                        </a>
+                    </th>
+                }
+
+                @if (Model.DisplayCommittee)
+                {
+                    <th class="sorting">
+                        <a href="@grid.GetSortUrl("CommitteeId")">
+                            @Resources.FieldCommittee
+                        </a>
+                    </th>
+                }
+
+                <th class="sorting">
+                    <a href="@grid.GetSortUrl("ContactPhone")">
+                        @Resources.FieldPhone
+                    </a>
+                </th>
+
+                <th class="sorting hidden-480">
+                    <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
+                    <a href="@grid.GetSortUrl("Created")">
+                        @Resources.FieldCreatedDate
+                    </a>
+                </th>
+
+                <th class="sorting hidden-480">
+                    <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
+                    <a href="@grid.GetSortUrl("Modified")">
+                        @Resources.FieldModifiedDate
+                    </a>
+                </th>
+                <th class="hidden-480">@Resources.FieldStatus</th>
+                <th class="hidden-480">@Resources.FieldRoles</th>
+
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var userRow in grid.Rows)
+            {
+                ApplicationUser user = userRow.Value;
+                <tr>
+                    <td>
+                        <a href="@Url.Action("Edit", new { id = user.Id })">@user.Email</a>
+                    </td>
+                    <td>@user.LastName, @user.FirstName</td>
+                    @if (Model.DisplayClients)
+                    {
+                        var client = coreContext.Clients.Find(user.ClientId);
+                        <td>@(client == null ? user.Company : client.CompanyName)</td>
+                    }
+
+                    @if (Model.DisplayCommittee)
+                    {
+                        var committee = coreContext.Committees.Find(user.CommitteeId);
+                        <td>@(committee == null ? null : committee.Name)</td>
+                    }
+
+                    <td>@user.ContactPhone</td>
+                    <td class="hidden-480">@user.Created.ToString(UIConfiguration.DateFormat)</td>
+                    <td class="hidden-480">@user.Modified.ToString(UIConfiguration.DateFormat)</td>
+
+                    <td class="hidden-480">
+                        @if (user.EmailConfirmed)
+                        {
+                            <span class="label label-sm label-success">@Resources.UserStatusRegistered</span>
+                        }
+                        else
+                        {
+                            <span class="label label-sm label-warning">@Resources.UserStatusWaitingApproval</span>
+                        }
+                    </td>
+                    <td class="hidden-480">
+                        @{
+                            var userRoles = userManager.GetRolesAsync(user.Id).Result;
+                        }
+                        @foreach (var userRole in userRoles)
+                        {
+                            <span class="label label-sm label-default">@Resources.ResourceManager.GetString("Role" + userRole)</span>
+                        }
+                    </td>
+
+                    <td>
+                        @Html.Partial("_GridItemMenu", user)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @Html.Partial("_Pager", grid)
+</div>

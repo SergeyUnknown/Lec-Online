@@ -1,0 +1,32 @@
+﻿@model LecOnline.Models.Request.RequestDocumentationViewModel
+@{
+    var isAdmin = this.User.IsInRole(RoleNames.Administrator);
+}
+<h3 class="header smaller lighter blue">
+    @Resources.RequestFormDocumentation
+    <small>@Resources.RequestFormDocumentationHint</small>
+</h3>
+<h3 class="header smaller lighter blue">
+    @Resources.RequestAdditionalFormDocumentation
+    <small>@Resources.RequestAdditionalFormDocumentationHint</small>
+</h3>
+<div class="form-group">
+    <div class="col-md-12">
+        <ul class="list-unstyled spaced">
+            @foreach (var file in this.Model.AdditionalFiles)
+            {
+                <li>
+                    <a class="btn btn-xs btn-primary" href="@Url.Action("DownloadFile", new { id = file.Id })">
+                        <i class="ace-icon fa fa-download bigger-110 icon-only"></i>
+                        @*@Resources.Download*@
+                    </a>
+                    @file.Name 
+                </li>
+            }
+        </ul>
+        <a class="btn btn-warning" title="@Resources.DocumentationAttachment" href="@Url.Action("SubmissionArchive", new { id = this.Model.Id })" target="_blank">
+            <i class="ace-icon fa fa-inbox  bigger-110"></i>
+            @Resources.DocumentationAttachment
+        </a>
+    </div>
+</div>

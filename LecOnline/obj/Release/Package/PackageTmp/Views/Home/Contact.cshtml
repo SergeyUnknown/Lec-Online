@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = Resources.PageContactsTitle;
+    var configuration = LecOnlineConfigurationSection.Instance;
+}
+<h2>@ViewBag.Title.</h2>
+
+<p>@Resources.PageContactsInfoLine1</p>
+<p>@Resources.PageContactsInfoLine2</p>
+
+<address>
+    <strong>@Resources.PageContactsAddress:</strong><br/>
+    @Resources.PageContactsAddressLine1<br />
+    @Resources.PageContactsAddressLine2<br />
+</address>
+
+<address>
+    <strong><abbr title="@Resources.PageContactsContactsPhone">@Resources.PageContactsContactsPhoneAbbr:</abbr></strong> <a href="tel:@configuration.Phone">@configuration.Phone</a><br />
+    <strong>@Resources.PageContactsContactsEmail:</strong> <a href="mailto:@configuration.Email">@configuration.Email</a><br />
+    <strong>@Resources.PageContactsContactsSkype:</strong> <a href="callto:@configuration.Skype">@configuration.Skype</a><br />
+</address>

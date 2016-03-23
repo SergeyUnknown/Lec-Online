@@ -1,0 +1,74 @@
+﻿@model LecOnline.Models.Request.EditRequestViewModel
+@{
+    var context = this.Context.GetOwinContext();
+    var actionsManager = context.Get<ActionsManager>();
+    var sidebarManager = context.Get<SidebarManager>();
+    var userItem = sidebarManager.FindById("Requests");
+    userItem.IsOpen = true;
+    userItem.IsActive = true;
+    var allUserItem = sidebarManager.FindById("Requests.All");
+    allUserItem.IsActive = true;
+}
+@section Scripts {
+    @Html.Partial("_UploadDocumentationJavascript")
+}
+<div class="page-header">
+    <h1>
+        @Resources.PageRequestsTitle
+        <small>
+            <i class="ace-icon fa fa-angle-double-right"></i>
+            @Resources.PageAllRequestsTitle
+        </small>
+    </h1>
+</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>@Resources.EditRequest @(Model.BaseInformation.Title)</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="row">
+            <div class="col-md-6">
+                @if (Model.BaseInformation.RequestType != RequestType.NotificationRequest)
+                {
+                    @Html.EditorFor(m => m.BaseInformation)
+                } 
+                else
+                {
+                    @Html.DisplayFor(m => m.BaseInformation)
+                }
+            </div>
+
+            <div class="col-md-6">
+                @if (Model.BaseInformation.RequestType != RequestType.NotificationRequest)
+                {
+                    @Html.EditorFor(m => m.ContactInformation)
+                }
+                else
+                {
+                    @Html.DisplayFor(m => m.ContactInformation)
+                }
+                @Html.EditorFor(m => m.Documentation)
+            </div>
+        </div>
+        <div class="row form-actions">
+            <div class="col-md-6">
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="@Resources.Save" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink(Resources.BackToList, "Index")
+</div>
+@Html.Partial("_UploadDocumentationModal")

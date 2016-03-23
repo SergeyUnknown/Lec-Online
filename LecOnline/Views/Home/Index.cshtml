@@ -1,0 +1,36 @@
+﻿@using LecOnline.Models.Account
+@{
+    ViewBag.Title = Resources.PageHomeTitle;
+    var configuration = LecOnlineConfigurationSection.Instance;
+}
+
+<div class="jumbotron" style="display: none">
+    <h1>ASP.NET</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>@Resources.PageLoginTitle</h2>
+        <img src="/Content/img/auth.jpg" alt="" title="" border="0" class="thumbnail img-responsive img-home-page">
+        @Html.Partial("../Account/_Login", new LoginViewModel() { DisplayRegisterLink = false, LabelWidth = 3, ControlWidth = 9 })
+    </div>
+    <div class="col-md-4">
+        <h2>@Resources.PageAboutTitle</h2>
+        <img src="~/Content/img/about.jpg" alt="" title="" border="0" class="thumbnail img-responsive img-home-page">
+        <p>@Resources.PageContactsInfoLine1</p>
+        <p><a class="btn btn-default" href="@Url.Action("About", "Home")">@Resources.More &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>@Resources.PageContactsTitle</h2>
+        <img src="~/Content/img/contacts.jpg" alt="" title="" border="0" class="thumbnail img-responsive img-home-page">
+        
+        <address>
+            <strong><abbr title="@Resources.PageContactsContactsPhone">@Resources.PageContactsContactsPhoneAbbr:</abbr></strong> <a href="tel:@configuration.Phone">@configuration.Phone</a><br />
+            <strong>@Resources.PageContactsContactsEmail:</strong> <a href="mailto:@configuration.Email">@configuration.Email</a><br />
+            <strong>@Resources.PageContactsContactsSkype:</strong> <a href="callto:@configuration.Skype">@configuration.Skype</a><br />
+        </address>
+        <p><a class="btn btn-default" href="@Url.Action("Contact", "Home")">@Resources.More &raquo;</a></p>
+    </div>
+</div>

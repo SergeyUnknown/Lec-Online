@@ -1,0 +1,11 @@
+﻿@model int?
+@{  
+    var context = this.Context.GetOwinContext();
+    var dbContext = context.Get<LecOnlineDbEntities>();
+    IEnumerable<SelectListItem> items = new List<SelectListItem>()
+        {
+            new SelectListItem() { Value = "", Text = Resources.NotSpecified }
+        };
+    items = items.Union(dbContext.Clients.Select(_ => new SelectListItem() { Text = _.CompanyName, Value = _.Id.ToString(), Selected = _.Id == this.Model }));
+}
+@Html.DropDownList("", items, ViewData["htmlAttributes"])

@@ -1,0 +1,20 @@
+﻿@model string
+@{
+    var context = this.Context.GetOwinContext();
+    var userManager = context.Get<ApplicationUserManager>();
+    var user = string.IsNullOrWhiteSpace(Model) ? null : userManager.FindByEmailAsync(Model).Result;
+    var actionsManager = context.Get<ActionsManager>();
+    var userActions = user == null 
+        ? new ActionDescription[0] 
+        : actionsManager.GetActions(user);
+    var editAction = userActions.FirstOrDefault(_ => _.Id == "Common.Edit");
+    var userText = user == null ? string.Empty : user.ShortFullName;
+}
+@if (editAction != null)
+{
+    @Html.ActionLink(userText, editAction.Action, "User", editAction.RouteParameters, null)
+}
+else
+{
+    @userText    
+}

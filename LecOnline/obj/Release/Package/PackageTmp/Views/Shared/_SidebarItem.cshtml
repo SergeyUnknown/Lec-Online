@@ -1,0 +1,25 @@
+﻿@model SidebarItem
+@{
+    var sidebarItem = this.Model;
+}
+<li class="@(sidebarItem.IsActive ? "active" : string.Empty) @(sidebarItem.IsOpen ? "open" : string.Empty)">
+    <a href="@Url.Action(sidebarItem.Action, sidebarItem.Controller, sidebarItem.RouteParameters)" class="@(sidebarItem.Items.Count == 0 ? string.Empty : "dropdown-toggle")">
+        <i class="menu-icon fa @sidebarItem.Icon"></i>
+        <span class="menu-text">@sidebarItem.Title</span>
+        @if (sidebarItem.Items.Count > 0)
+        {
+            <b class="arrow fa fa-angle-down"></b>
+        }
+    </a>
+
+    <b class="arrow"></b>
+    @if (sidebarItem.Items.Count > 0)
+    {
+        <ul class="submenu">
+            @foreach (var childSidebarItem in sidebarItem.Items)
+            {
+                @Html.Partial("_SidebarItem", childSidebarItem)
+            }
+        </ul>
+    }
+</li>

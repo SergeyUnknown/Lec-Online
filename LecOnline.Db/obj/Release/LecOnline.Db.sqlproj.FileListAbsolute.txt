@@ -1,0 +1,9 @@
+D:\Repos\GitHub\LECTest\LecOnline.Db\bin\Release\LecOnline.Db.dacpac
+D:\Repos\GitHub\LECTest\LecOnline.Db\bin\Release\LecOnline.Db.dll
+D:\Repos\GitHub\LECTest\LecOnline.Db\bin\Release\LecOnline.Db.pdb
+D:\Repos\GitHub\LECTest\LecOnline.Db\obj\Release\Model.xml
+D:\Repos\GitHub\LECTest\LecOnline.Db\obj\Release\refactor.xml
+D:\Repos\GitHub\LECTest\LecOnline.Db\obj\Release\postdeploy.sql
+D:\Repos\GitHub\LECTest\LecOnline.Db\obj\Release\predeploy.sql
+D:\Repos\GitHub\LECTest\LecOnline.Db\obj\Release\LecOnline.Db.dll
+D:\Repos\GitHub\LECTest\LecOnline.Db\obj\Release\LecOnline.Db.pdb

@@ -1,0 +1,59 @@
+﻿@model LecOnline.Models.Security.ErrorLogViewModel
+@{
+    var context = this.Context.GetOwinContext();
+    var sidebarManager = context.Get<SidebarManager>();
+    var settingsItem = sidebarManager.FindById("Security");
+    settingsItem.IsOpen = true;
+    settingsItem.IsActive = true;
+    var committeesItem = sidebarManager.FindById("Security.Audit");
+    committeesItem.IsActive = true;
+}
+<div class="page-header">
+    <h1>
+        @Resources.PageAuditLogTitle
+        @*<small>
+                <i class="ace-icon fa fa-angle-double-right"></i>
+                @Resources.PageAllRequestsTitle
+            </small>*@
+    </h1>
+</div>
+
+<div class="form-horizontal">
+    <h4>@Resources.ViewChangeLogEntry @(Model.Id)</h4>
+    <hr />
+    <div class="form-group">
+        @Html.LabelFor(model => model.Id, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Created, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Created, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.Created, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ErrorMessage, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <pre>@Model.ErrorMessage</pre>
+        </div>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink(Resources.BackToList, "Errors")
+</div>
+

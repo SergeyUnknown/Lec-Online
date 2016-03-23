@@ -1,0 +1,3 @@
+﻿@model bool?
+<input type="checkbox" name="@this.Html.Name("")" @((this.Model ?? false) ? "checked" : "") value="true">
+<input type="hidden" name="@this.Html.Name("")" value="false" />

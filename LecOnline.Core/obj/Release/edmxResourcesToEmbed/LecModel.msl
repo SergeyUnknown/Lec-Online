@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LecOnlineDbModelStoreContainer" CdmEntityContainer="LecOnlineDbEntities">
+    <EntitySetMapping Name="Configurations">
+      <EntityTypeMapping TypeName="LecOnlineDbModel.Configuration">
+        <MappingFragment StoreEntitySet="Configuration">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="LecOnlineDbModel.Client">
+        <MappingFragment StoreEntitySet="Clients">
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+          <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Committees">
+      <EntityTypeMapping TypeName="LecOnlineDbModel.Committee">
+        <MappingFragment StoreEntitySet="Committees">
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="ViceChairman" ColumnName="ViceChairman" />
+          <ScalarProperty Name="Secretary" ColumnName="Secretary" />
+          <ScalarProperty Name="Chairman" ColumnName="Chairman" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ErrorLogs">
+      <EntityTypeMapping TypeName="LecOnlineDbModel.ErrorLog">
+        <MappingFragment StoreEntitySet="ErrorLog">
+          <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Meetings">
+      <EntityTypeMapping TypeName="LecOnlineDbModel.Meeting">
+        <MappingFragment StoreEntitySet="Meetings">
+          <ScalarProperty Name="Resolution" ColumnName="Resolution" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="MeetingLog" ColumnName="MeetingLog" />
+          <ScalarProperty Name="Protocol" ColumnName="Protocol" />
+          <ScalarProperty Name="MeetingDate" ColumnName="MeetingDate" />
+          <ScalarProperty Name="RequestId" ColumnName="RequestId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RequestDocumentations">
+      <EntityTypeMapping TypeName="LecOnlineDbModel.RequestDocumentation">
+        <MappingFragment StoreEntitySet="RequestDocumentations">
+          <ScalarProperty Name="FileType" ColumnName="FileType" />
+          <ScalarProperty Name="SignedBy" ColumnName="SignedBy" />
+          <ScalarProperty Name="Signed" ColumnName="Signed" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="RequestId" ColumnName="RequestId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Requests">
+      <EntityTypeMapping TypeName="LecOnlineDbModel.Request">
+        <MappingFragment StoreEntitySet="Requests">
+          <ScalarProperty Name="BaseRequestId" ColumnName="BaseRequestId" />
+          <ScalarProperty Name="RequestType" ColumnName="RequestType" />
+          <ScalarProperty Name="LocalCentersQty" ColumnName="LocalCentersQty" />
+          <ScalarProperty Name="InternationStudies" ColumnName="InternationStudies" />
+          <ScalarProperty Name="TherapyDescription" ColumnName="TherapyDescription" />
+          <ScalarProperty Name="PopulationDescription" ColumnName="PopulationDescription" />
+          <ScalarProperty Name="EarlierStudy" ColumnName="EarlierStudy" />
+          <ScalarProperty Name="StudyPlannedFinishDate" ColumnName="StudyPlannedFinishDate" />
+          <ScalarProperty Name="StudyPlannedStartDate" ColumnName="StudyPlannedStartDate" />
+          <ScalarProperty Name="SubmittedBy" ColumnName="SubmittedBy" />
+          <ScalarProperty Name="StudyPhase" ColumnName="StudyPhase" />
+          <ScalarProperty Name="StudyBase" ColumnName="StudyBase" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="StudyApprovedBy" ColumnName="StudyApprovedBy" />
+          <ScalarProperty Name="StudyPerformerRegisteredAddress" ColumnName="StudyPerformerRegisteredAddress" />
+          <ScalarProperty Name="StudyPerformerStatutoryAddress" ColumnName="StudyPerformerStatutoryAddress" />
+          <ScalarProperty Name="StudyPerformer" ColumnName="StudyPerformer" />
+          <ScalarProperty Name="StudyProducer" ColumnName="StudyProducer" />
+          <ScalarProperty Name="StudySponsor" ColumnName="StudySponsor" />
+          <ScalarProperty Name="RandomizedPatientsCount" ColumnName="RandomizedPatientsCount" />
+          <ScalarProperty Name="LastComments" ColumnName="LastComments" />
+          <ScalarProperty Name="RejectionComments" ColumnName="RejectionComments" />
+          <ScalarProperty Name="RevokeComments" ColumnName="RevokeComments" />
+          <ScalarProperty Name="SubmissionComments" ColumnName="SubmissionComments" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="AcceptedBy" ColumnName="AcceptedBy" />
+          <ScalarProperty Name="Accepted" ColumnName="Accepted" />
+          <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
+          <ScalarProperty Name="ContactFax" ColumnName="ContactFax" />
+          <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="PatientsCount" ColumnName="PatientsCount" />
+          <ScalarProperty Name="PlannedDuration" ColumnName="PlannedDuration" />
+          <ScalarProperty Name="CentersQty" ColumnName="CentersQty" />
+          <ScalarProperty Name="StudyType" ColumnName="StudyType" />
+          <ScalarProperty Name="StudyCode" ColumnName="StudyCode" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="CommitteeId" ColumnName="CommitteeId" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MeetingAttendees">
+      <EntityTypeMapping TypeName="LecOnlineDbModel.MeetingAttendee">
+        <MappingFragment StoreEntitySet="MeetingAttendees">
+          <ScalarProperty Name="Vote" ColumnName="Vote" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="MeetingId" ColumnName="MeetingId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChangesLogs">
+      <EntityTypeMapping TypeName="LecOnlineDbModel.ChangesLog">
+        <MappingFragment StoreEntitySet="ChangesLog">
+          <ScalarProperty Name="CommitteeId" ColumnName="CommitteeId" />
+          <ScalarProperty Name="ChangeDescription" ColumnName="ChangeDescription" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="ChangedBy" ColumnName="ChangedBy" />
+          <ScalarProperty Name="Changed" ColumnName="Changed" />
+          <ScalarProperty Name="ObjectId" ColumnName="ObjectId" />
+          <ScalarProperty Name="ObjectType" ColumnName="ObjectType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MeetingChatMessages">
+      <EntityTypeMapping TypeName="LecOnlineDbModel.MeetingChatMessage">
+        <MappingFragment StoreEntitySet="MeetingChatMessages">
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="MeetingId" ColumnName="MeetingId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RequestActions">
+      <EntityTypeMapping TypeName="LecOnlineDbModel.RequestAction">
+        <MappingFragment StoreEntitySet="RequestActions">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="ActionDate" ColumnName="ActionDate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ActionType" ColumnName="ActionType" />
+          <ScalarProperty Name="RequestId" ColumnName="RequestId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

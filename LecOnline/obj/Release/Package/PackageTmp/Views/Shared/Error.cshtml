@@ -1,0 +1,15 @@
+﻿@model HandleErrorInfo
+
+@{
+    ViewBag.Title = Resources.PageError;
+}
+
+<h1 class="text-danger">@Resources.PageErrorHeader</h1>
+<h2 class="text-danger">@Resources.PageErrorDescription</h2>
+
+@if (HttpContext.Current.IsDebuggingEnabled)
+{
+    <pre>
+    @Model.Exception.ToString()
+    </pre>
+}

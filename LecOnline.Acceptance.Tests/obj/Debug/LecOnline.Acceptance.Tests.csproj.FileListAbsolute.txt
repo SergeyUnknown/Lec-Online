@@ -1,0 +1,7 @@
+D:\Repos\GitHub\Lec-Online\LecOnline.Acceptance.Tests\bin\Debug\LecOnline.Acceptance.Tests.dll.config
+D:\Repos\GitHub\Lec-Online\LecOnline.Acceptance.Tests\bin\Debug\LecOnline.Acceptance.Tests.dll
+D:\Repos\GitHub\Lec-Online\LecOnline.Acceptance.Tests\bin\Debug\LecOnline.Acceptance.Tests.pdb
+D:\Repos\GitHub\Lec-Online\LecOnline.Acceptance.Tests\bin\Debug\TechTalk.SpecFlow.dll
+D:\Repos\GitHub\Lec-Online\LecOnline.Acceptance.Tests\obj\Debug\LecOnline.Acceptance.Tests.csprojResolveAssemblyReference.cache
+D:\Repos\GitHub\Lec-Online\LecOnline.Acceptance.Tests\obj\Debug\LecOnline.Acceptance.Tests.dll
+D:\Repos\GitHub\Lec-Online\LecOnline.Acceptance.Tests\obj\Debug\LecOnline.Acceptance.Tests.pdb

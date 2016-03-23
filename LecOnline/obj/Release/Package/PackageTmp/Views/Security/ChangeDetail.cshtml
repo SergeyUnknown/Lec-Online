@@ -1,0 +1,75 @@
+﻿@model LecOnline.Models.Security.ChangesLogViewModel
+@{
+    var context = this.Context.GetOwinContext();
+    var sidebarManager = context.Get<SidebarManager>();
+    var settingsItem = sidebarManager.FindById("Security");
+    settingsItem.IsOpen = true;
+    settingsItem.IsActive = true;
+    var committeesItem = sidebarManager.FindById("Security.Audit");
+    committeesItem.IsActive = true;
+}
+<div class="page-header">
+    <h1>
+        @Resources.PageAuditLogTitle
+        @*<small>
+                <i class="ace-icon fa fa-angle-double-right"></i>
+                @Resources.PageAllRequestsTitle
+            </small>*@
+    </h1>
+</div>
+
+<div class="form-horizontal">
+    <h4>@Resources.ViewChangeLogEntry @(Model.Id)</h4>
+    <hr />
+    <div class="form-group">
+        @Html.LabelFor(model => model.Id, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ObjectType, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ObjectType, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.ObjectType, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ObjectId, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ObjectId, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.ObjectId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Changed, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Changed, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.Changed, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ChangedBy, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ChangedBy, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.ChangedBy, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ChangeDescription, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <pre>@Model.ChangeDescription</pre>
+        </div>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink(Resources.BackToList, "AuditLog")
+</div>
+

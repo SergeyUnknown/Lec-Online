@@ -1,0 +1,18 @@
+﻿@model string
+@{  
+    var context = this.Context.GetOwinContext();
+    var dbContext = context.Get<LecOnlineDbEntities>();
+    var userManager = context.Get<ApplicationUserManager>();
+    var users = userManager.GetCommitteeMembers((int)ViewBag.CommitteeId);
+    IEnumerable<SelectListItem> items = new List<SelectListItem>()
+        {
+            new SelectListItem() { Value = "", Text = Resources.NotSpecified }
+        };
+    items = items.Union(users.ToArray().Select(_ => new SelectListItem() 
+    { 
+        Text = _.FullName, 
+        Value = _.Id, 
+        Selected = _.Id == this.Model 
+    }));
+}
+@Html.DropDownList("", items, ViewData["htmlAttributes"])

@@ -1,0 +1,15 @@
+﻿@using LecOnline.Models.Account
+@model RegisterViewModel
+@{
+    ViewBag.Title = Resources.Registration;
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+    var model = this.Model ?? new RegisterViewModel();
+    model.InitiallyVisible = true;
+}
+@Html.Partial("_Login", new LoginViewModel())
+@Html.Partial("_ForgotPassword", new ForgotPasswordViewModel())
+@Html.Partial("_Register", model)
+
+@section Scripts {
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+}

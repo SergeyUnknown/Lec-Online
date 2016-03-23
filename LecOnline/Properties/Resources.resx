@@ -1,0 +1,1018 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountLockedOut" xml:space="preserve">
+    <value>Ваша учетная запись заблокирована, попробуйте повторить попытку</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Назад</value>
+  </data>
+  <data name="BackToEdit" xml:space="preserve">
+    <value>Назад к редактированию</value>
+  </data>
+  <data name="BackToList" xml:space="preserve">
+    <value>Назад к списку</value>
+  </data>
+  <data name="BackToLogin" xml:space="preserve">
+    <value>Назад к входу</value>
+  </data>
+  <data name="CancelUpload" xml:space="preserve">
+    <value>Отменить загрузку</value>
+  </data>
+  <data name="CancelUploadConfirmation" xml:space="preserve">
+    <value>Вы уверены что хотите отменить загрузку файла.</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Изменить пароль</value>
+  </data>
+  <data name="ChangeYourPassword" xml:space="preserve">
+    <value>Измените ваш пароль</value>
+  </data>
+  <data name="ChooseUserRole" xml:space="preserve">
+    <value>Выберите роль ...</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Создать</value>
+  </data>
+  <data name="CreateClient" xml:space="preserve">
+    <value>Создание клиента</value>
+  </data>
+  <data name="CreateCommittee" xml:space="preserve">
+    <value>Создание комитета</value>
+  </data>
+  <data name="CreatePassword" xml:space="preserve">
+    <value>Установить пароль</value>
+  </data>
+  <data name="CreateRequest" xml:space="preserve">
+    <value>Новая заявка</value>
+  </data>
+  <data name="CreateUser" xml:space="preserve">
+    <value>Создать пользователя</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="DeletePrompt" xml:space="preserve">
+    <value>Вы действительно хотите удалить эту запись?</value>
+  </data>
+  <data name="DeleteRequest" xml:space="preserve">
+    <value>Удаление заявки</value>
+  </data>
+  <data name="DeleteRequestDocumentation" xml:space="preserve">
+    <value>Удалить документацию</value>
+  </data>
+  <data name="Download" xml:space="preserve">
+    <value>Скачать</value>
+  </data>
+  <data name="DropzoneDropFiles" xml:space="preserve">
+    <value>Перетяните файлы</value>
+  </data>
+  <data name="DropzoneOrClick" xml:space="preserve">
+    <value>или нажмите мышкой</value>
+  </data>
+  <data name="DropzoneToUpload" xml:space="preserve">
+    <value>для загрузки</value>
+  </data>
+  <data name="EditClient" xml:space="preserve">
+    <value>Редактирование клиента</value>
+  </data>
+  <data name="EditCommittee" xml:space="preserve">
+    <value>Редактирование комитета</value>
+  </data>
+  <data name="EditRequest" xml:space="preserve">
+    <value>Редактирование заявки</value>
+  </data>
+  <data name="EditUser" xml:space="preserve">
+    <value>Редактирование пользователя</value>
+  </data>
+  <data name="EnterUsingLocalAccount" xml:space="preserve">
+    <value>Введите ваши данные</value>
+  </data>
+  <data name="FieldAcceptedBy" xml:space="preserve">
+    <value>Рассмотрено</value>
+  </data>
+  <data name="FieldAcceptedDate" xml:space="preserve">
+    <value>Дата рассмотрения</value>
+  </data>
+  <data name="FieldAddress" xml:space="preserve">
+    <value>Адрес</value>
+  </data>
+  <data name="FieldCentersQty" xml:space="preserve">
+    <value>Количество исследовательских центров</value>
+  </data>
+  <data name="FieldChangedBy" xml:space="preserve">
+    <value>Изменивший пользователь</value>
+  </data>
+  <data name="FieldChangedDate" xml:space="preserve">
+    <value>Дата изменения</value>
+  </data>
+  <data name="FieldChangeDescription" xml:space="preserve">
+    <value>Описание изменений</value>
+  </data>
+  <data name="FieldCity" xml:space="preserve">
+    <value>Город</value>
+  </data>
+  <data name="FieldClient" xml:space="preserve">
+    <value>Клиент</value>
+  </data>
+  <data name="FieldCode" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="FieldCommittee" xml:space="preserve">
+    <value>Комитет</value>
+  </data>
+  <data name="FieldCompany" xml:space="preserve">
+    <value>Компания</value>
+  </data>
+  <data name="FieldCompanyName" xml:space="preserve">
+    <value>Название компании</value>
+  </data>
+  <data name="FieldConfirmPassword" xml:space="preserve">
+    <value>Подтвердите пароль</value>
+  </data>
+  <data name="FieldContactPerson" xml:space="preserve">
+    <value>Контактное лицо</value>
+  </data>
+  <data name="FieldContinuteToEditPage" xml:space="preserve">
+    <value>Продолжить редактирование заявки после ее создания?</value>
+  </data>
+  <data name="FieldCreatedBy" xml:space="preserve">
+    <value>Создано</value>
+  </data>
+  <data name="FieldCreatedDate" xml:space="preserve">
+    <value>Дата создания</value>
+  </data>
+  <data name="FieldEmail" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="FieldFax" xml:space="preserve">
+    <value>Факс</value>
+  </data>
+  <data name="FieldFileName" xml:space="preserve">
+    <value>Имя файла</value>
+  </data>
+  <data name="FieldFirstName" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="FieldFullName" xml:space="preserve">
+    <value>Полное имя</value>
+  </data>
+  <data name="FieldId" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="FieldLastName" xml:space="preserve">
+    <value>Фамилия</value>
+  </data>
+  <data name="FieldMessage" xml:space="preserve">
+    <value>Сообщение</value>
+  </data>
+  <data name="FieldModifiedDate" xml:space="preserve">
+    <value>Дата изменения</value>
+  </data>
+  <data name="FieldName" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="FieldNotes" xml:space="preserve">
+    <value>Заметки</value>
+  </data>
+  <data name="FieldObjectId" xml:space="preserve">
+    <value>Код объекта</value>
+  </data>
+  <data name="FieldObjectType" xml:space="preserve">
+    <value>Тип объекта</value>
+  </data>
+  <data name="FieldPassword" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="FieldPatientsCount" xml:space="preserve">
+    <value>Скринированные</value>
+  </data>
+  <data name="FieldPatronymicName" xml:space="preserve">
+    <value>Отчество</value>
+  </data>
+  <data name="FieldPhone" xml:space="preserve">
+    <value>Телефон</value>
+  </data>
+  <data name="FieldPlannedDuration" xml:space="preserve">
+    <value>План. длит. участия пациентов (нед.)</value>
+  </data>
+  <data name="FieldRejectionReason" xml:space="preserve">
+    <value>Причины отказа в обработке заявки</value>
+  </data>
+  <data name="FieldRememberMe" xml:space="preserve">
+    <value>Запомнить меня?</value>
+  </data>
+  <data name="FieldRememberThisBrowser" xml:space="preserve">
+    <value>Запомнить данный браузер?</value>
+  </data>
+  <data name="FieldRevocationComment" xml:space="preserve">
+    <value>Причины отзыва заявки</value>
+  </data>
+  <data name="FieldRoles" xml:space="preserve">
+    <value>Роли</value>
+  </data>
+  <data name="FieldSelectCommitteeForSubmission" xml:space="preserve">
+    <value>Выберите комитет куда отправить заявку</value>
+  </data>
+  <data name="FieldStatus" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="FieldStudyCode" xml:space="preserve">
+    <value>Номер протокола</value>
+  </data>
+  <data name="FieldStudyTitle" xml:space="preserve">
+    <value>Название исследования</value>
+  </data>
+  <data name="FieldStudyType" xml:space="preserve">
+    <value>Тип исследования</value>
+  </data>
+  <data name="FieldSubmissionComment" xml:space="preserve">
+    <value>Коментарии для коммиссии</value>
+  </data>
+  <data name="FieldTitle" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="FieldTwoFactorAuthentication" xml:space="preserve">
+    <value>Двух-факторная аутентификация</value>
+  </data>
+  <data name="FieldUserName" xml:space="preserve">
+    <value>Пользователь</value>
+  </data>
+  <data name="FileTooBig" xml:space="preserve">
+    <value>Файл слишком большой</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Забыли пароль?</value>
+  </data>
+  <data name="HasFilesPendingUpload" xml:space="preserve">
+    <value>Загрузка файлов не завершена. Дождитесь завершения загрузки, или отмените загрузку файлов чтобы закрыть окно</value>
+  </data>
+  <data name="IAccept" xml:space="preserve">
+    <value>Я согласен с</value>
+  </data>
+  <data name="InvalidLoginAttempt" xml:space="preserve">
+    <value>Неудачная попытка входа.</value>
+  </data>
+  <data name="InvalidVerificationCode" xml:space="preserve">
+    <value>Неверный код.</value>
+  </data>
+  <data name="LockedOut" xml:space="preserve">
+    <value>Заблокировано.</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Вход</value>
+  </data>
+  <data name="Logoff" xml:space="preserve">
+    <value>Выход</value>
+  </data>
+  <data name="More" xml:space="preserve">
+    <value>Подробнее</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>След.</value>
+  </data>
+  <data name="NoReplyName" xml:space="preserve">
+    <value>(не отвечайте)</value>
+  </data>
+  <data name="NotSpecified" xml:space="preserve">
+    <value>Не указано</value>
+  </data>
+  <data name="PageAboutTitle" xml:space="preserve">
+    <value>О нас</value>
+  </data>
+  <data name="PageAllRequestsTitle" xml:space="preserve">
+    <value>Все заявки</value>
+  </data>
+  <data name="PageAllUsersTitle" xml:space="preserve">
+    <value>Все пользователи</value>
+  </data>
+  <data name="PageAuditLogTitle" xml:space="preserve">
+    <value>Протокол изменений</value>
+  </data>
+  <data name="PageChangePasswordForm" xml:space="preserve">
+    <value>Форма изменения пароля</value>
+  </data>
+  <data name="PageChangePasswordTitle" xml:space="preserve">
+    <value>Изменение пароля</value>
+  </data>
+  <data name="PageClientsTitle" xml:space="preserve">
+    <value>Клиенты</value>
+  </data>
+  <data name="PageCommitteesTitle" xml:space="preserve">
+    <value>Комитеты</value>
+  </data>
+  <data name="PageContactsAddress" xml:space="preserve">
+    <value>Наш офис</value>
+  </data>
+  <data name="PageContactsAddressLine1" xml:space="preserve">
+    <value>Санкт-Петербург,</value>
+  </data>
+  <data name="PageContactsAddressLine2" xml:space="preserve">
+    <value>пл. Конституции, дом 7, литера А. офис №413</value>
+  </data>
+  <data name="PageContactsContactsEmail" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="PageContactsContactsPhone" xml:space="preserve">
+    <value>Телефон</value>
+  </data>
+  <data name="PageContactsContactsPhoneAbbr" xml:space="preserve">
+    <value>Тел</value>
+  </data>
+  <data name="PageContactsContactsSkype" xml:space="preserve">
+    <value>Skype</value>
+  </data>
+  <data name="PageContactsInfoLine1" xml:space="preserve">
+    <value>LEC-Online - это профессиональный межрегиональный мультидисциплинарный этический комитет, впервые в РФ использующий современные сертифицированные технологии связи и документооборота для обеспечения быстрого и качественного процесса этической экспертизы</value>
+  </data>
+  <data name="PageContactsInfoLine2" xml:space="preserve">
+    <value>Вы можете обратиться к нам по телефону, по электронной почте или договориться о встрече в нашем офисе. Будем рады помочь вам и ответить на все ваши вопросы.</value>
+  </data>
+  <data name="PageContactsTitle" xml:space="preserve">
+    <value>Контакты</value>
+  </data>
+  <data name="PageDashboardTitle" xml:space="preserve">
+    <value>Кабинет</value>
+  </data>
+  <data name="PageErrorsTitle" xml:space="preserve">
+    <value>Ошибки</value>
+  </data>
+  <data name="PageForgotPasswordTitle" xml:space="preserve">
+    <value>Забыли пароль?</value>
+  </data>
+  <data name="PageHomeTitle" xml:space="preserve">
+    <value>Главная</value>
+  </data>
+  <data name="PageInstallationTitle" xml:space="preserve">
+    <value>Установка</value>
+  </data>
+  <data name="PageLockedOutTitle" xml:space="preserve">
+    <value>Заблокировано</value>
+  </data>
+  <data name="PageLoginTitle" xml:space="preserve">
+    <value>Авторизация</value>
+  </data>
+  <data name="PageManageAccountForm" xml:space="preserve">
+    <value>Измените параметры вашей учетной записи</value>
+  </data>
+  <data name="PageManageAccountTitle" xml:space="preserve">
+    <value>Управление аккаунтом</value>
+  </data>
+  <data name="PageNotConfirmedUsersTitle" xml:space="preserve">
+    <value>Неподтвержденные пользователи</value>
+  </data>
+  <data name="PageRequestsTitle" xml:space="preserve">
+    <value>Заявки</value>
+  </data>
+  <data name="PageUsersTitle" xml:space="preserve">
+    <value>Пользователи</value>
+  </data>
+  <data name="PasswordChangedConfirmation" xml:space="preserve">
+    <value>Ваш пароль был изменен.</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Пред.</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Зарегистрироваться</value>
+  </data>
+  <data name="RegisterANewAccount" xml:space="preserve">
+    <value>Зарегистрируйте учетную запись:</value>
+  </data>
+  <data name="RegisterAsNewUser" xml:space="preserve">
+    <value>Зарегистрироваться</value>
+  </data>
+  <data name="Registration" xml:space="preserve">
+    <value>Регистрация</value>
+  </data>
+  <data name="RejectApplication" xml:space="preserve">
+    <value>Отклонить заявку</value>
+  </data>
+  <data name="RemoveFile" xml:space="preserve">
+    <value>Убрать файл</value>
+  </data>
+  <data name="RequestFormBaseInformation" xml:space="preserve">
+    <value>Базовая информация</value>
+  </data>
+  <data name="RequestFormBaseInformationHint" xml:space="preserve">
+    <value>Основная информация о заявке</value>
+  </data>
+  <data name="RequestFormContactInformation" xml:space="preserve">
+    <value>Контактное лицо</value>
+  </data>
+  <data name="RequestFormContactInformationHint" xml:space="preserve">
+    <value>Данные об административном контакте</value>
+  </data>
+  <data name="RequestFormDocumentation" xml:space="preserve">
+    <value>Вложения</value>
+  </data>
+  <data name="RequestFormDocumentationHint" xml:space="preserve">
+    <value>файлы и документация прилагающаяся к заявке</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Сброс</value>
+  </data>
+  <data name="ResponseError" xml:space="preserve">
+    <value>Ошибка при загрузке файла</value>
+  </data>
+  <data name="RetreivePasswordInstructions" xml:space="preserve">
+    <value>Введите ваш email и получите инструкции по восстановлению вашего пароля.</value>
+  </data>
+  <data name="RetrievePassword" xml:space="preserve">
+    <value>Восстановление пароля</value>
+  </data>
+  <data name="RevokeApplication" xml:space="preserve">
+    <value>Отозвать заявку</value>
+  </data>
+  <data name="RoleAdministrator" xml:space="preserve">
+    <value>Администратор</value>
+  </data>
+  <data name="RoleEthicalCommitteeMember" xml:space="preserve">
+    <value>Член этического комитета</value>
+  </data>
+  <data name="RoleManager" xml:space="preserve">
+    <value>Менеджер</value>
+  </data>
+  <data name="RoleMedicalCenter" xml:space="preserve">
+    <value>Сотрудник Мед. центра</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="SelectFilesToUpload" xml:space="preserve">
+    <value>Выберите файлы для загрузки</value>
+  </data>
+  <data name="SendMe" xml:space="preserve">
+    <value>Отправить</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="ShowingEntries" xml:space="preserve">
+    <value>Показывается c {0} по {1} записи. Всего {2} записей.</value>
+  </data>
+  <data name="SubmitRequest" xml:space="preserve">
+    <value>Отправить заявку</value>
+  </data>
+  <data name="TwoFactorAuthenticationNotConfigured" xml:space="preserve">
+    <value>Двух-факторная аутентификация не настроена</value>
+  </data>
+  <data name="Upload" xml:space="preserve">
+    <value>Загрузить</value>
+  </data>
+  <data name="UploadDocumentation" xml:space="preserve">
+    <value>Загрузить документацию</value>
+  </data>
+  <data name="UploadingIsAvailableOnEditPage" xml:space="preserve">
+    <value>Вы можете загрузить необходимые файлы, на странице редактирования, после того как заполните базовую информацию о заявке.</value>
+  </data>
+  <data name="UserAgreement" xml:space="preserve">
+    <value>Пользовательское соглашение</value>
+  </data>
+  <data name="UserAgreementAccepts" xml:space="preserve">
+    <value>Пользовательским соглашением</value>
+  </data>
+  <data name="UserStatusDisabled" xml:space="preserve">
+    <value>Отключен</value>
+  </data>
+  <data name="UserStatusRegistered" xml:space="preserve">
+    <value>Зарегистрирован</value>
+  </data>
+  <data name="UserStatusWaitingApproval" xml:space="preserve">
+    <value>Ожидает подтверждения</value>
+  </data>
+  <data name="ValidationMessageCompare" xml:space="preserve">
+    <value>Пароль и подтверждение пароля отличаются</value>
+  </data>
+  <data name="ValidationMessageEmailAddress" xml:space="preserve">
+    <value>Поле {0} не является e-mail адресом</value>
+  </data>
+  <data name="ValidationMessageRequired" xml:space="preserve">
+    <value>Поле {0} обязательно к заполнению.</value>
+  </data>
+  <data name="ValidationMessageStringLength" xml:space="preserve">
+    <value>{0} должен быть {2} символов в длину.</value>
+  </data>
+  <data name="ValidationMessageSubmissionCommitteeRequired" xml:space="preserve">
+    <value>Необходимо указать комитет, куда будет отправляться заявка на рассмотрение</value>
+  </data>
+  <data name="ViewChangeLogEntry" xml:space="preserve">
+    <value>Просмотр записи аудита №</value>
+  </data>
+  <data name="ViewRequest" xml:space="preserve">
+    <value>Просмотр заявки</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Внимание</value>
+  </data>
+  <data name="FieldMeetingDate" xml:space="preserve">
+    <value>Дата совещания</value>
+  </data>
+  <data name="FieldMembers" xml:space="preserve">
+    <value>Участники</value>
+  </data>
+  <data name="SetMeeting" xml:space="preserve">
+    <value>Назначить совещание</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Добро пожаловать,</value>
+  </data>
+  <data name="FieldVote" xml:space="preserve">
+    <value>Голос</value>
+  </data>
+  <data name="MeetingRoom" xml:space="preserve">
+    <value>Совещание по заявке - </value>
+  </data>
+  <data name="ViewAttendees" xml:space="preserve">
+    <value>Участники комитета для заявки</value>
+  </data>
+  <data name="VoteAccept" xml:space="preserve">
+    <value>Согласен</value>
+  </data>
+  <data name="VoteReject" xml:space="preserve">
+    <value>Не согласен</value>
+  </data>
+  <data name="YouAlreadyPlaceVote" xml:space="preserve">
+    <value>Вы уже проголосовали</value>
+  </data>
+  <data name="PageConfirmEmailBody" xml:space="preserve">
+    <value>Вы успешно подтвердили ваш e-mail.</value>
+  </data>
+  <data name="PageConfirmEmailTitle" xml:space="preserve">
+    <value>Подтверждение e-mail</value>
+  </data>
+  <data name="PageForgotPasswordConfirmationCaption" xml:space="preserve">
+    <value>Вы успешно восстановили свой пароль.</value>
+  </data>
+  <data name="PageForgotPasswordConfirmationTitle" xml:space="preserve">
+    <value>Успешное восстановление пароля</value>
+  </data>
+  <data name="PageResetPasswordConfirmationTitle" xml:space="preserve">
+    <value>Успешный сброс пароля</value>
+  </data>
+  <data name="PageResetPasswordTitle" xml:space="preserve">
+    <value>Сброс пароля</value>
+  </data>
+  <data name="PleaseClickHere" xml:space="preserve">
+    <value>Пожалуйста перейдтие на </value>
+  </data>
+  <data name="ResetPasswordCaption" xml:space="preserve">
+    <value>Укажите ваш новый пароль</value>
+  </data>
+  <data name="ResetPasswordConfirmationCaption" xml:space="preserve">
+    <value>Вы успешно сбросили пароль.</value>
+  </data>
+  <data name="ToLogin" xml:space="preserve">
+    <value>страницу входа</value>
+  </data>
+  <data name="DocumentationAttachment" xml:space="preserve">
+    <value>Архив документации</value>
+  </data>
+  <data name="DocumentationRequest" xml:space="preserve">
+    <value>Заявка</value>
+  </data>
+  <data name="DocumentationResolution" xml:space="preserve">
+    <value>Выписка</value>
+  </data>
+  <data name="FieldDescription" xml:space="preserve">
+    <value>Цель клинического исследования</value>
+  </data>
+  <data name="FieldDocumentation" xml:space="preserve">
+    <value>Документы</value>
+  </data>
+  <data name="FieldRandomizedPatientsCount" xml:space="preserve">
+    <value>Рандомизированных</value>
+  </data>
+  <data name="FieldStudyApprovedBy" xml:space="preserve">
+    <value>№ приказа МЗ РФ</value>
+  </data>
+  <data name="FieldStudyBase" xml:space="preserve">
+    <value>Испытательная база</value>
+  </data>
+  <data name="FieldStudyPerformer" xml:space="preserve">
+    <value>Компания проводящая исследование</value>
+  </data>
+  <data name="FieldStudyPerformerRegisteredAddress" xml:space="preserve">
+    <value>Юридический адрес</value>
+  </data>
+  <data name="FieldStudyPerformerStatutoryAddress" xml:space="preserve">
+    <value>Фактический адрес</value>
+  </data>
+  <data name="FieldStudyProducer" xml:space="preserve">
+    <value>Производитель/упаковщик</value>
+  </data>
+  <data name="FieldStudySponsor" xml:space="preserve">
+    <value>Спонсор исследования</value>
+  </data>
+  <data name="HelpPopupHeader" xml:space="preserve">
+    <value>Справка</value>
+  </data>
+  <data name="HelpTextCentersQty" xml:space="preserve">
+    <value>Укажите кол-во центров в которых будет проводиться исследование</value>
+  </data>
+  <data name="HelpTextDescription" xml:space="preserve">
+    <value>Опишите цель клинического исследования в соотвествии с ФЗ "Об обращении лекарственных средств"</value>
+  </data>
+  <data name="HelpTextPatientsCount" xml:space="preserve">
+    <value>Укажите планируемое количество пациентов</value>
+  </data>
+  <data name="HelpTextPlannedDuration" xml:space="preserve">
+    <value>Укажите планируемую длительность клинического исследования в неделях</value>
+  </data>
+  <data name="HelpTextRandomizedPatientsCount" xml:space="preserve">
+    <value>Укажите планируемое количество пациентов котороые будут рандомизированы в рамках проводимого испытания</value>
+  </data>
+  <data name="HelpTextStudyApprovedBy" xml:space="preserve">
+    <value>Укажите документ МЗ РФ который одобрил проведение данного клинического исследования</value>
+  </data>
+  <data name="HelpTextStudyBase" xml:space="preserve">
+    <value>Учреждение где будет проводиться испытание</value>
+  </data>
+  <data name="HelpTextStudyCode" xml:space="preserve">
+    <value>Код проводимого исследования</value>
+  </data>
+  <data name="HelpTextStudyPerformer" xml:space="preserve">
+    <value>Укажите компанию которая проводит клиническое исследование</value>
+  </data>
+  <data name="HelpTextStudyPerformerRegisteredAddress" xml:space="preserve">
+    <value>Укажите юридический адрес компании которая проводит клиническое исследование</value>
+  </data>
+  <data name="HelpTextStudyPerformerStatutoryAddress" xml:space="preserve">
+    <value>Укажите фактический адрес компании которая проводит клиническое исследование</value>
+  </data>
+  <data name="HelpTextStudyProducer" xml:space="preserve">
+    <value>Укажите название компании которая является производителем или упаковщиком медицинского препарата, для которого производится исследование</value>
+  </data>
+  <data name="HelpTextStudySponsor" xml:space="preserve">
+    <value>Укажите название компании, которая является спонсором проводимого клинического исследования</value>
+  </data>
+  <data name="HelpTextStudyType" xml:space="preserve">
+    <value>Укажите тип проводимого исследования</value>
+  </data>
+  <data name="HelpTextTitle" xml:space="preserve">
+    <value>Укажите название исследования, по которому вы хотите отправить заявку</value>
+  </data>
+  <data name="LocalizableString_LocalizationFailed" xml:space="preserve">
+    <value>Ошибка локализации {0}. Не удается найти свойство {2} у типа {1}</value>
+  </data>
+  <data name="RequestPatientsCount" xml:space="preserve">
+    <value>Количество пациентов в РФ</value>
+  </data>
+  <data name="StudyLegalData" xml:space="preserve">
+    <value>Организационные данные</value>
+  </data>
+  <data name="StudyTechnicalData" xml:space="preserve">
+    <value>Технические данные по исследованию</value>
+  </data>
+  <data name="FieldDegree" xml:space="preserve">
+    <value>Научная степень</value>
+  </data>
+  <data name="FieldStudyPhase" xml:space="preserve">
+    <value>Фаза исследования</value>
+  </data>
+  <data name="HelpTextStudyPhase" xml:space="preserve">
+    <value>Укажите фазу клинического исследования, которое должно получить одобрение этического комитета</value>
+  </data>
+  <data name="NoSubmissionForRequest" xml:space="preserve">
+    <value>Для данной заявки не было загружено ни одного документа</value>
+  </data>
+  <data name="SubmissionBaseFileName" xml:space="preserve">
+    <value>Заявка-{0}.zip</value>
+  </data>
+  <data name="UploadFiles" xml:space="preserve">
+    <value>Загрузить файлы</value>
+  </data>
+  <data name="Abstain" xml:space="preserve">
+    <value>Воздержался</value>
+  </data>
+  <data name="FieldMeetingLog" xml:space="preserve">
+    <value>Протокол заседания</value>
+  </data>
+  <data name="FieldProtocol" xml:space="preserve">
+    <value>Принятое решение</value>
+  </data>
+  <data name="FieldResolution" xml:space="preserve">
+    <value>Решение</value>
+  </data>
+  <data name="HelpMeetingLog" xml:space="preserve">
+    <value>Краткое перечисление событий произошедших на совещании</value>
+  </data>
+  <data name="HelpProtocol" xml:space="preserve">
+    <value>Перечисление принятых на митинге решений в текстовой форме.
+Данный текст попадет в выписку</value>
+  </data>
+  <data name="HelpResolution" xml:space="preserve">
+    <value>Краткое описание решения по заявке принятое на митинге.</value>
+  </data>
+  <data name="MeetingNotes" xml:space="preserve">
+    <value>Результаты совещания</value>
+  </data>
+  <data name="PageError" xml:space="preserve">
+    <value>Ошибка</value>
+  </data>
+  <data name="PageErrorDescription" xml:space="preserve">
+    <value>Во время обработки вашего запроса произошла ошибка.</value>
+  </data>
+  <data name="PageErrorHeader" xml:space="preserve">
+    <value>Ошибка.</value>
+  </data>
+  <data name="FieldChairman" xml:space="preserve">
+    <value>Председатель</value>
+  </data>
+  <data name="FieldSecretary" xml:space="preserve">
+    <value>Секретарь</value>
+  </data>
+  <data name="FieldViceChairman" xml:space="preserve">
+    <value>Зам. председателя</value>
+  </data>
+  <data name="BackToDashboard" xml:space="preserve">
+    <value>Назад в кабинет</value>
+  </data>
+  <data name="PageUserProfileTitle" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>Фильтр</value>
+  </data>
+  <data name="FilterFromDate" xml:space="preserve">
+    <value>От</value>
+  </data>
+  <data name="FilterRequestName" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="FilterRequestStatus" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="FilterTillDate" xml:space="preserve">
+    <value>До</value>
+  </data>
+  <data name="FilterUserClient" xml:space="preserve">
+    <value>Клиент</value>
+  </data>
+  <data name="FilterUserCommittee" xml:space="preserve">
+    <value>Комитет</value>
+  </data>
+  <data name="FilterUserName" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="ValidationMessageCouldNotHaveMoreThenOneRole" xml:space="preserve">
+    <value>Нельзя указать больше одной роли</value>
+  </data>
+  <data name="ValidationMessageCouldNotSetBothClientAndCommittee" xml:space="preserve">
+    <value>Пользователь не может быть одновременно в организации и этическом комитете</value>
+  </data>
+  <data name="ValidationMessageShouldHaveAtLeastOneRole" xml:space="preserve">
+    <value>Необходимо чтобы пользователь был хотя бы в одной роли</value>
+  </data>
+  <data name="ValidationMessageResolutionRequired" xml:space="preserve">
+    <value>Необходимо принять решение</value>
+  </data>
+  <data name="FieldActionDate" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+  <data name="FieldActionDescription" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="FieldActionUser" xml:space="preserve">
+    <value>Пользователь</value>
+  </data>
+  <data name="MailRegistrationSuccessfulBody" xml:space="preserve">
+    <value>Регистрация завершена успешно. Дождитесь активации вашей учетной записи администратором</value>
+  </data>
+  <data name="MailRegistrationSuccessfulSubject" xml:space="preserve">
+    <value>Регистрация завершена успешно</value>
+  </data>
+  <data name="RegistrationSuccessful" xml:space="preserve">
+    <value>Регистрация завершена успешно. Дождитесь активации вашей учетной записи администратором</value>
+  </data>
+  <data name="RequestFormActions" xml:space="preserve">
+    <value>События</value>
+  </data>
+  <data name="RequestFormActionsHint" xml:space="preserve">
+    <value>События и операции связанные с этой заявкой</value>
+  </data>
+  <data name="ValidationMessageLicenseAgreementNotAccepted" xml:space="preserve">
+    <value>Пользователь должен принять пользовательское соглашение</value>
+  </data>
+  <data name="ValidationMessageRange" xml:space="preserve">
+    <value>Поле {0} должно быть в диапазоне от {1} до {2}.</value>
+  </data>
+  <data name="FieldEarlierStudy" xml:space="preserve">
+    <value>Ранее проводимые исследования</value>
+  </data>
+  <data name="FieldInternationStudies" xml:space="preserve">
+    <value>Международное участие</value>
+  </data>
+  <data name="FieldLocalCentersQty" xml:space="preserve">
+    <value>Кол-во центров в РФ</value>
+  </data>
+  <data name="FieldPopulationDescription" xml:space="preserve">
+    <value>Описание популяции</value>
+  </data>
+  <data name="FieldStudyPlannedEndDate" xml:space="preserve">
+    <value>Дата окончания исследования.</value>
+  </data>
+  <data name="FieldStudyPlannedStartDate" xml:space="preserve">
+    <value>Дата начала иссл.</value>
+  </data>
+  <data name="FieldTherapyDescription" xml:space="preserve">
+    <value>Подход к терапии лечения</value>
+  </data>
+  <data name="HelpEarlierStudy" xml:space="preserve">
+    <value>Укажите ранее проводимые исследования с данным препаратом. Это поможет сотрудникам комитета иметь более полное представление о препарате.</value>
+  </data>
+  <data name="HelpInternationStudies" xml:space="preserve">
+    <value>Укажите другие международные исследования с данным препаратом, если это применимо.</value>
+  </data>
+  <data name="HelpPopulationDescription" xml:space="preserve">
+    <value>Укажите описание популяции, с которой будет проводится исследование. </value>
+  </data>
+  <data name="HelpTextLocalCentersQty" xml:space="preserve">
+    <value>Количество исследовательских центров в РФ</value>
+  </data>
+  <data name="HelpTextStudyPlannedEndDate" xml:space="preserve">
+    <value>Укажите планируемую дату окончания исследования</value>
+  </data>
+  <data name="HelpTextStudyPlannedStartDate" xml:space="preserve">
+    <value>Укажите планируемую дату начала исследования</value>
+  </data>
+  <data name="HelpTherapyDescription" xml:space="preserve">
+    <value>Укажите подход к терапии лечения</value>
+  </data>
+  <data name="PleaseSpecifyMeaningfulFleName" xml:space="preserve">
+    <value>Перед загрузкой постарайтесь указывать понятное имя файла, чтобы сотрудникам комитета было удобнее с ними работать</value>
+  </data>
+  <data name="StudyDurationData" xml:space="preserve">
+    <value>Период прохождения исследования</value>
+  </data>
+  <data name="FileAllowanceFromMinistryOfHealth" xml:space="preserve">
+    <value>Разрешение от министерства РФ</value>
+  </data>
+  <data name="FileAllowanceFromMinistryOfHealthIsMissing" xml:space="preserve">
+    <value>Разрешение от министерства РФ отсутсвует</value>
+  </data>
+  <data name="FileExcerptFromEthicsProtocol" xml:space="preserve">
+    <value>Выписка из протокола по этике</value>
+  </data>
+  <data name="FileExcerptFromEthicsProtocolIsMissing" xml:space="preserve">
+    <value>Выписка из протокола по этике отсутсвует</value>
+  </data>
+  <data name="FileInformedAgreementForm" xml:space="preserve">
+    <value>Форма информированного согласия</value>
+  </data>
+  <data name="FileInformedAgreementFormIsMissing" xml:space="preserve">
+    <value>Форма информированного согласия отсуствует</value>
+  </data>
+  <data name="FileResearchBrochure" xml:space="preserve">
+    <value>Брошюра иследователя по препарату</value>
+  </data>
+  <data name="FileResearchBrochureIsMissing" xml:space="preserve">
+    <value>Брошюра иследователя по препарату отсутсвует</value>
+  </data>
+  <data name="FileStudyProtocol" xml:space="preserve">
+    <value>Протокол клинического исследования</value>
+  </data>
+  <data name="FileStudyProtocolIsMissing" xml:space="preserve">
+    <value>Протокол клинического исследования отсутсвует</value>
+  </data>
+  <data name="RequestAdditionalFormDocumentation" xml:space="preserve">
+    <value>Доп. вложения</value>
+  </data>
+  <data name="RequestAdditionalFormDocumentationHint" xml:space="preserve">
+    <value>Необязательные вложения к документации</value>
+  </data>
+  <data name="CreateNotificationRequest" xml:space="preserve">
+    <value>Новое уведомление</value>
+  </data>
+  <data name="CreateSecondaryRequest" xml:space="preserve">
+    <value>Вторичная подача</value>
+  </data>
+  <data name="FieldSuppressMissingFiles" xml:space="preserve">
+    <value>Подать с не полным пакетом документов</value>
+  </data>
+  <data name="NotSufficientDocumentationForSubmission" xml:space="preserve">
+    <value>Не достаточно документации для отправки в этический комитет</value>
+  </data>
+</root>

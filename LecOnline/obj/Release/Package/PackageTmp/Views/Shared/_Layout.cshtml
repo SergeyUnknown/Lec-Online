@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - LEC online</title>
+    @*@Scripts.Render("~/bundles/modernizr")*@
+
+    @RenderSection("Styles", required: false)
+    <link rel="stylesheet" href="~/Content/Ace/css/dropzone.css" />
+    <link rel="stylesheet" href="/Content/Ace/css/bootstrap.css" />
+    <link rel="stylesheet" href="/Content/Ace/css/font-awesome.css" />
+
+    <!-- page specific plugin styles -->
+    <link rel="stylesheet" href="~/Content/Ace/css/jquery-ui.custom.css" />
+    <link rel="stylesheet" href="~/Content/Ace/css/chosen.css" />
+    <link rel="stylesheet" href="~/Content/Ace/css/datepicker.css" />
+    <link rel="stylesheet" href="~/Content/Ace/css/bootstrap-timepicker.css" />
+    <link rel="stylesheet" href="~/Content/Ace/css/daterangepicker.css" />
+    <link rel="stylesheet" href="~/Content/Ace/css/bootstrap-datetimepicker.css" />
+    <link rel="stylesheet" href="~/Content/Ace/css/colorpicker.css" />
+
+    <!-- text fonts -->
+    <link rel="stylesheet" href="/Content/Ace/css/ace-fonts.css" />
+
+    <!-- ace styles -->
+    <link rel="stylesheet" href="/Content/Ace/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/Content/Ace/css/ace-part2.css" />
+    <![endif]-->
+    <link rel="stylesheet" href="/Content/Ace/css/ace-rtl.css" />
+
+    <!--[if lte IE 9]>
+      <link rel="stylesheet" href="/Content/Ace/css/ace-ie.css" />
+    <![endif]-->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/Content/Ace/js/html5shiv.js"></script>
+    <script src="/Content/Ace/js/respond.js"></script>
+    <![endif]-->
+    @Styles.Render("~/Content/css")
+    @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")*@
+    <!--[if !IE]> -->
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='/Content/Ace/js/jquery.js'>" + "<" + "/script>");
+    </script>
+</head>
+<body class="no-skin">
+    @Html.Partial("_Navbar")
+    <div class="main-container" id="main-container">
+        <script type="text/javascript">
+            try { ace.settings.check('main-container', 'fixed') } catch (e) { }
+        </script>
+        @if (User.Identity.IsAuthenticated)
+        {
+            @Html.Partial("_Sidebar")
+        }
+
+        <div class="main-content">
+            @RenderSection("breadcrumbs", required: false)
+            @*<div class="breadcrumbs">
+                    <!-- breadcrumbs goes here -->
+                </div>*@
+
+            <div class="page-content">
+                <!-- setting box goes here if needed -->
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        @RenderBody()
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+
+            </div><!-- /.page-content -->
+        </div><!-- /.main-content -->
+        <!-- footer area -->
+        <div class="footer">
+            <div class="footer-inner">
+                <div class="footer-content">
+                    <p>&copy; @DateTime.Now.Year - LEC online</p>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /.main-container -->
+
+    <!-- <![endif]-->
+    <!--[if IE]>
+    <script type="text/javascript">
+     window.jQuery || document.write("<script src='/Content/Ace/js/jquery1x.js'>"+"<"+"/script>");
+    </script>
+    <![endif]-->
+    <script type="text/javascript">
+        if ('ontouchstart' in document.documentElement) document.write("<script src='/Content/Ace/js/jquery.mobile.custom.js'>" + "<" + "/script>");
+    </script>
+    <script src="/Content/Ace/js/bootstrap.js"></script>
+
+    <!-- page specific plugin scripts -->
+    <!--[if lte IE 8]>
+      <script src="/Content/Ace/js/excanvas.js"></script>
+    <![endif]-->
+
+    <script src="/Content/Ace/js/jquery-ui.custom.js"></script>
+    <script src="~/Content/Ace/js/jquery.validate.js"></script>
+    <script src="/Content/Ace/js/chosen.jquery.js"></script>
+    <script src="/Content/Ace/js/fuelux/fuelux.spinner.js"></script>
+    <script src="/Content/Ace/js/date-time/bootstrap-datepicker.js"></script>
+    <script src="/Content/Ace/js/date-time/bootstrap-datepicker.ru.min.js"></script>
+    <script src="/Content/Ace/js/date-time/bootstrap-timepicker.js"></script>
+    <script src="/Content/Ace/js/date-time/moment.js"></script>
+    <script src="/Content/Ace/js/date-time/daterangepicker.js"></script>
+    <script src="/Content/Ace/js/date-time/bootstrap-datetimepicker.js"></script>
+    <script src="/Content/Ace/js/bootstrap-colorpicker.js"></script>
+    <script src="/Content/Ace/js/jquery.knob.js"></script>
+    <script src="/Content/Ace/js/jquery.autosize.js"></script>
+    <script src="/Content/Ace/js/jquery.inputlimiter.1.3.1.js"></script>
+    <script src="/Content/Ace/js/jquery.maskedinput.js"></script>
+    <script src="/Content/Ace/js/bootstrap-tag.js"></script>
+
+    <!-- ace scripts -->
+    <script src="/Content/Ace/js/ace/elements.scroller.js"></script>
+    <script src="/Content/Ace/js/ace/elements.colorpicker.js"></script>
+    <script src="/Content/Ace/js/ace/elements.fileinput.js"></script>
+    <script src="/Content/Ace/js/ace/elements.typeahead.js"></script>
+    <script src="/Content/Ace/js/ace/elements.wysiwyg.js"></script>
+    <script src="/Content/Ace/js/ace/elements.spinner.js"></script>
+    <script src="/Content/Ace/js/ace/elements.treeview.js"></script>
+    <script src="/Content/Ace/js/ace/elements.wizard.js"></script>
+    <script src="/Content/Ace/js/ace/elements.aside.js"></script>
+    <script src="/Content/Ace/js/ace/ace.js"></script>
+    <script src="/Content/Ace/js/ace/ace.ajax-content.js"></script>
+    <script src="/Content/Ace/js/ace/ace.touch-drag.js"></script>
+    <script src="/Content/Ace/js/ace/ace.sidebar.js"></script>
+    <script src="/Content/Ace/js/ace/ace.sidebar-scroll-1.js"></script>
+    <script src="/Content/Ace/js/ace/ace.submenu-hover.js"></script>
+    <script src="/Content/Ace/js/ace/ace.widget-box.js"></script>
+    <script src="/Content/Ace/js/ace/ace.settings.js"></script>
+    <script src="/Content/Ace/js/ace/ace.settings-rtl.js"></script>
+    <script src="/Content/Ace/js/ace/ace.settings-skin.js"></script>
+    <script src="/Content/Ace/js/ace/ace.widget-on-reload.js"></script>
+    <script src="/Content/Ace/js/ace/ace.searchbox-autocomplete.js"></script>
+
+    <!-- inline scripts related to this page -->
+    <script type="text/javascript">
+        jQuery(function ($) {
+            $(document).on('click', '.toolbar a[data-target]', function (e) {
+                e.preventDefault();
+                var target = $(this).data('target');
+                $('.widget-box.visible').removeClass('visible');//hide others
+                $(target).addClass('visible');//show target
+            });
+
+            //$('[data-rel=tooltip]').tooltip({ container: 'body' });
+            $('[data-rel=popover]').popover({ container: 'body' });
+            $(".form-control.date").datepicker({
+                language: "ru",
+            });
+        });
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

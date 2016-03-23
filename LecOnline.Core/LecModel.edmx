@@ -1,0 +1,824 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LecOnlineDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ChangesLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ObjectType" Type="int" Nullable="false" />
+          <Property Name="ObjectId" Type="int" Nullable="false" />
+          <Property Name="Changed" Type="datetime" Nullable="false" />
+          <Property Name="ChangedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClientId" Type="int" />
+          <Property Name="CommitteeId" Type="int" />
+          <Property Name="ChangeDescription" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ContactPerson" Type="nvarchar" MaxLength="200" />
+          <Property Name="ContactEmail" Type="nvarchar" MaxLength="100" />
+          <Property Name="ContactPhone" Type="nvarchar" MaxLength="100" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Committees">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+          <Property Name="Chairman" Type="nvarchar" MaxLength="128" />
+          <Property Name="ViceChairman" Type="nvarchar" MaxLength="128" />
+          <Property Name="Secretary" Type="nvarchar" MaxLength="128" />
+          <Property Name="City" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="Configuration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Value" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ErrorLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="32" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="ErrorMessage" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="MeetingAttendees">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MeetingId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Status" Type="tinyint" />
+          <Property Name="Vote" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="MeetingChatMessages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MeetingId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="SentDate" Type="datetime" Nullable="false" />
+          <Property Name="Message" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Meetings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RequestId" Type="int" Nullable="false" />
+          <Property Name="MeetingDate" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Protocol" Type="nvarchar(max)" />
+          <Property Name="MeetingLog" Type="nvarchar(max)" />
+          <Property Name="Resolution" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RequestActions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RequestId" Type="int" Nullable="false" />
+          <Property Name="ActionType" Type="tinyint" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="ActionDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RequestDocumentations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RequestId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="FileType" Type="tinyint" Nullable="false" />
+          <Property Name="Content" Type="varbinary(max)" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="Signed" Type="datetime" />
+          <Property Name="SignedBy" Type="nvarchar" MaxLength="32" />
+        </EntityType>
+        <EntityType Name="Requests">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientId" Type="int" Nullable="false" />
+          <Property Name="CommitteeId" Type="int" />
+          <Property Name="RequestType" Type="tinyint" Nullable="false" />
+          <Property Name="BaseRequestId" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="512" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="EarlierStudy" Type="nvarchar(max)" />
+          <Property Name="PopulationDescription" Type="nvarchar(max)" />
+          <Property Name="TherapyDescription" Type="nvarchar(max)" />
+          <Property Name="InternationStudies" Type="nvarchar(max)" />
+          <Property Name="StudyCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="StudyType" Type="int" />
+          <Property Name="StudyPhase" Type="int" Nullable="false" />
+          <Property Name="CentersQty" Type="int" Nullable="false" />
+          <Property Name="LocalCentersQty" Type="int" Nullable="false" />
+          <Property Name="PlannedDuration" Type="int" Nullable="false" />
+          <Property Name="PatientsCount" Type="int" Nullable="false" />
+          <Property Name="RandomizedPatientsCount" Type="int" />
+          <Property Name="StudyBase" Type="nvarchar" MaxLength="256" />
+          <Property Name="StudySponsor" Type="nvarchar" MaxLength="256" />
+          <Property Name="StudyProducer" Type="nvarchar" MaxLength="256" />
+          <Property Name="StudyPerformer" Type="nvarchar" MaxLength="256" />
+          <Property Name="StudyPerformerStatutoryAddress" Type="nvarchar" MaxLength="300" />
+          <Property Name="StudyPerformerRegisteredAddress" Type="nvarchar" MaxLength="300" />
+          <Property Name="StudyApprovedBy" Type="nvarchar" MaxLength="256" />
+          <Property Name="StudyPlannedStartDate" Type="datetime" />
+          <Property Name="StudyPlannedFinishDate" Type="datetime" />
+          <Property Name="ContactPerson" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="ContactPhone" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="ContactFax" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="ContactEmail" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="SubmissionComments" Type="nvarchar" MaxLength="1000" />
+          <Property Name="RevokeComments" Type="nvarchar" MaxLength="1000" />
+          <Property Name="RejectionComments" Type="nvarchar" MaxLength="1000" />
+          <Property Name="LastComments" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="SentDate" Type="datetime" />
+          <Property Name="SubmittedBy" Type="nvarchar" MaxLength="32" />
+          <Property Name="Accepted" Type="datetime" />
+          <Property Name="AcceptedBy" Type="nvarchar" MaxLength="32" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_MeetingAttendees_ToMeetings">
+          <End Role="Meetings" Type="Self.Meetings" Multiplicity="1" />
+          <End Role="MeetingAttendees" Type="Self.MeetingAttendees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meetings">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MeetingAttendees">
+              <PropertyRef Name="MeetingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MeetingChatMessages_ToMeetings">
+          <End Role="Meetings" Type="Self.Meetings" Multiplicity="1" />
+          <End Role="MeetingChatMessages" Type="Self.MeetingChatMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meetings">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MeetingChatMessages">
+              <PropertyRef Name="MeetingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Meetings_ToRequests">
+          <End Role="Requests" Type="Self.Requests" Multiplicity="1" />
+          <End Role="Meetings" Type="Self.Meetings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Requests">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Meetings">
+              <PropertyRef Name="RequestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_ToClients">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+          <End Role="Requests" Type="Self.Requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Requests">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_ToCommittees">
+          <End Role="Committees" Type="Self.Committees" Multiplicity="0..1" />
+          <End Role="Requests" Type="Self.Requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Committees">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Requests">
+              <PropertyRef Name="CommitteeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_ToRequests_BaseRequestId">
+          <End Role="Requests" Type="Self.Requests" Multiplicity="0..1" />
+          <End Role="Requests1" Type="Self.Requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Requests">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Requests1">
+              <PropertyRef Name="BaseRequestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RequestActions_ToRequest">
+          <End Role="Requests" Type="Self.Requests" Multiplicity="1" />
+          <End Role="RequestActions" Type="Self.RequestActions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Requests">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RequestActions">
+              <PropertyRef Name="RequestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RequestDocumentations_ToRequests">
+          <End Role="Requests" Type="Self.Requests" Multiplicity="1" />
+          <End Role="RequestDocumentations" Type="Self.RequestDocumentations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Requests">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RequestDocumentations">
+              <PropertyRef Name="RequestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LecOnlineDbModelStoreContainer">
+          <EntitySet Name="ChangesLog" EntityType="Self.ChangesLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Committees" EntityType="Self.Committees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Configuration" EntityType="Self.Configuration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ErrorLog" EntityType="Self.ErrorLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MeetingAttendees" EntityType="Self.MeetingAttendees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MeetingChatMessages" EntityType="Self.MeetingChatMessages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Meetings" EntityType="Self.Meetings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RequestActions" EntityType="Self.RequestActions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RequestDocumentations" EntityType="Self.RequestDocumentations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Requests" EntityType="Self.Requests" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_MeetingAttendees_ToMeetings" Association="Self.FK_MeetingAttendees_ToMeetings">
+            <End Role="Meetings" EntitySet="Meetings" />
+            <End Role="MeetingAttendees" EntitySet="MeetingAttendees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MeetingChatMessages_ToMeetings" Association="Self.FK_MeetingChatMessages_ToMeetings">
+            <End Role="Meetings" EntitySet="Meetings" />
+            <End Role="MeetingChatMessages" EntitySet="MeetingChatMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Meetings_ToRequests" Association="Self.FK_Meetings_ToRequests">
+            <End Role="Requests" EntitySet="Requests" />
+            <End Role="Meetings" EntitySet="Meetings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_ToClients" Association="Self.FK_Request_ToClients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Requests" EntitySet="Requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_ToCommittees" Association="Self.FK_Request_ToCommittees">
+            <End Role="Committees" EntitySet="Committees" />
+            <End Role="Requests" EntitySet="Requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_ToRequests_BaseRequestId" Association="Self.FK_Request_ToRequests_BaseRequestId">
+            <End Role="Requests" EntitySet="Requests" />
+            <End Role="Requests1" EntitySet="Requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RequestActions_ToRequest" Association="Self.FK_RequestActions_ToRequest">
+            <End Role="Requests" EntitySet="Requests" />
+            <End Role="RequestActions" EntitySet="RequestActions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RequestDocumentations_ToRequests" Association="Self.FK_RequestDocumentations_ToRequests">
+            <End Role="Requests" EntitySet="Requests" />
+            <End Role="RequestDocumentations" EntitySet="RequestDocumentations" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LecOnlineDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Configuration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="LecOnlineDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Configurations" EntityType="Self.Configuration" />
+          <EntitySet Name="Clients" EntityType="LecOnlineDbModel.Client" />
+          <EntitySet Name="Committees" EntityType="LecOnlineDbModel.Committee" />
+          <EntitySet Name="ErrorLogs" EntityType="LecOnlineDbModel.ErrorLog" />
+          <EntitySet Name="Meetings" EntityType="LecOnlineDbModel.Meeting" />
+          <EntitySet Name="RequestDocumentations" EntityType="LecOnlineDbModel.RequestDocumentation" />
+          <EntitySet Name="Requests" EntityType="LecOnlineDbModel.Request" />
+          <AssociationSet Name="FK_Request_ToClients" Association="LecOnlineDbModel.FK_Request_ToClients">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="Request" EntitySet="Requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_ToCommittees" Association="LecOnlineDbModel.FK_Request_ToCommittees">
+            <End Role="Committee" EntitySet="Committees" />
+            <End Role="Request" EntitySet="Requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Meetings_ToRequests" Association="LecOnlineDbModel.FK_Meetings_ToRequests">
+            <End Role="Request" EntitySet="Requests" />
+            <End Role="Meeting" EntitySet="Meetings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RequestDocumentations_ToRequests" Association="LecOnlineDbModel.FK_RequestDocumentations_ToRequests">
+            <End Role="Request" EntitySet="Requests" />
+            <End Role="RequestDocumentation" EntitySet="RequestDocumentations" />
+          </AssociationSet>
+          <EntitySet Name="MeetingAttendees" EntityType="LecOnlineDbModel.MeetingAttendee" />
+          <AssociationSet Name="FK_MeetingAttendees_ToMeetings" Association="LecOnlineDbModel.FK_MeetingAttendees_ToMeetings">
+            <End Role="Meeting" EntitySet="Meetings" />
+            <End Role="MeetingAttendee" EntitySet="MeetingAttendees" />
+          </AssociationSet>
+          <EntitySet Name="ChangesLogs" EntityType="LecOnlineDbModel.ChangesLog" />
+          <EntitySet Name="MeetingChatMessages" EntityType="LecOnlineDbModel.MeetingChatMessage" />
+          <AssociationSet Name="FK_MeetingChatMessages_ToMeetings" Association="LecOnlineDbModel.FK_MeetingChatMessages_ToMeetings">
+            <End Role="Meeting" EntitySet="Meetings" />
+            <End Role="MeetingChatMessage" EntitySet="MeetingChatMessages" />
+          </AssociationSet>
+          <EntitySet Name="RequestActions" EntityType="LecOnlineDbModel.RequestAction" />
+          <AssociationSet Name="FK_RequestActions_ToRequest" Association="LecOnlineDbModel.FK_RequestActions_ToRequest">
+            <End Role="Request" EntitySet="Requests" />
+            <End Role="RequestAction" EntitySet="RequestActions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_ToRequests_BaseRequestId" Association="LecOnlineDbModel.FK_Request_ToRequests_BaseRequestId">
+            <End Role="Request" EntitySet="Requests" />
+            <End Role="BaseRequest" EntitySet="Requests" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPerson" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ContactEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPhone" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Requests" Relationship="LecOnlineDbModel.FK_Request_ToClients" FromRole="Client" ToRole="Request" />
+        </EntityType>
+        <EntityType Name="Committee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Requests" Relationship="LecOnlineDbModel.FK_Request_ToCommittees" FromRole="Committee" ToRole="Request" />
+          <Property Name="Chairman" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Secretary" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ViceChairman" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ErrorLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ErrorMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Meeting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RequestId" Type="Int32" Nullable="false" />
+          <Property Name="MeetingDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Protocol" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MeetingLog" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Request" Relationship="LecOnlineDbModel.FK_Meetings_ToRequests" FromRole="Meeting" ToRole="Request" />
+          <NavigationProperty Name="MeetingAttendees" Relationship="LecOnlineDbModel.FK_MeetingAttendees_ToMeetings" FromRole="Meeting" ToRole="MeetingAttendee" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="MeetingChatMessages" Relationship="LecOnlineDbModel.FK_MeetingChatMessages_ToMeetings" FromRole="Meeting" ToRole="MeetingChatMessage" />
+          <Property Name="Resolution" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RequestDocumentation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RequestId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="Signed" Type="DateTime" Precision="3" />
+          <Property Name="SignedBy" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Request" Relationship="LecOnlineDbModel.FK_RequestDocumentations_ToRequests" FromRole="RequestDocumentation" ToRole="Request" />
+          <Property Name="FileType" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Request">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <Property Name="CommitteeId" Type="Int32" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="StudyCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StudyType" Type="Int32" Nullable="true" />
+          <Property Name="CentersQty" Type="Int32" Nullable="false" />
+          <Property Name="PlannedDuration" Type="Int32" Nullable="false" />
+          <Property Name="PatientsCount" Type="Int32" Nullable="false" />
+          <Property Name="ContactPerson" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPhone" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ContactFax" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ContactEmail" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="SentDate" Type="DateTime" Precision="3" />
+          <Property Name="Accepted" Type="DateTime" Precision="3" />
+          <Property Name="AcceptedBy" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="LecOnlineDbModel.FK_Request_ToClients" FromRole="Request" ToRole="Client" />
+          <NavigationProperty Name="Committee" Relationship="LecOnlineDbModel.FK_Request_ToCommittees" FromRole="Request" ToRole="Committee" />
+          <NavigationProperty Name="Meetings" Relationship="LecOnlineDbModel.FK_Meetings_ToRequests" FromRole="Request" ToRole="Meeting" />
+          <NavigationProperty Name="RequestDocumentations" Relationship="LecOnlineDbModel.FK_RequestDocumentations_ToRequests" FromRole="Request" ToRole="RequestDocumentation" />
+          <Property Name="SubmissionComments" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="RevokeComments" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="RejectionComments" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="LastComments" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="RandomizedPatientsCount" Type="Int32" />
+          <Property Name="StudySponsor" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="StudyProducer" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="StudyPerformer" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="StudyPerformerStatutoryAddress" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="StudyPerformerRegisteredAddress" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="StudyApprovedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StudyBase" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="StudyPhase" Type="Int32" Nullable="false" />
+          <Property Name="SubmittedBy" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RequestActions" Relationship="LecOnlineDbModel.FK_RequestActions_ToRequest" FromRole="Request" ToRole="RequestAction" />
+          <Property Name="StudyPlannedStartDate" Type="DateTime" Precision="3" Nullable="true" />
+          <Property Name="StudyPlannedFinishDate" Type="DateTime" Precision="3" Nullable="true" />
+          <Property Name="EarlierStudy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PopulationDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TherapyDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InternationStudies" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LocalCentersQty" Type="Int32" Nullable="false" />
+          <Property Name="RequestType" Type="Byte" Nullable="false" />
+          <Property Name="BaseRequestId" Type="Int32" />
+          <NavigationProperty Name="SubsequentRequests" Relationship="LecOnlineDbModel.FK_Request_ToRequests_BaseRequestId" FromRole="Request" ToRole="BaseRequest" />
+          <NavigationProperty Name="BaseRequest" Relationship="LecOnlineDbModel.FK_Request_ToRequests_BaseRequestId" FromRole="BaseRequest" ToRole="Request" />
+        </EntityType>
+        <Association Name="FK_Request_ToClients">
+          <End Type="LecOnlineDbModel.Client" Role="Client" Multiplicity="1" />
+          <End Type="LecOnlineDbModel.Request" Role="Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_ToCommittees">
+          <End Type="LecOnlineDbModel.Committee" Role="Committee" Multiplicity="0..1" />
+          <End Type="LecOnlineDbModel.Request" Role="Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Committee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="CommitteeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Meetings_ToRequests">
+          <End Type="LecOnlineDbModel.Request" Role="Request" Multiplicity="1" />
+          <End Type="LecOnlineDbModel.Meeting" Role="Meeting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Request">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Meeting">
+              <PropertyRef Name="RequestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RequestDocumentations_ToRequests">
+          <End Type="LecOnlineDbModel.Request" Role="Request" Multiplicity="1" />
+          <End Type="LecOnlineDbModel.RequestDocumentation" Role="RequestDocumentation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Request">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RequestDocumentation">
+              <PropertyRef Name="RequestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MeetingAttendee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MeetingId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Byte" />
+          <NavigationProperty Name="Meeting" Relationship="LecOnlineDbModel.FK_MeetingAttendees_ToMeetings" FromRole="MeetingAttendee" ToRole="Meeting" />
+          <Property Name="Vote" Type="Byte" />
+        </EntityType>
+        <Association Name="FK_MeetingAttendees_ToMeetings">
+          <End Type="LecOnlineDbModel.Meeting" Role="Meeting" Multiplicity="1" />
+          <End Type="LecOnlineDbModel.MeetingAttendee" Role="MeetingAttendee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meeting">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MeetingAttendee">
+              <PropertyRef Name="MeetingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ChangesLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ObjectType" Type="Int32" Nullable="false" />
+          <Property Name="ObjectId" Type="Int32" Nullable="false" />
+          <Property Name="Changed" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ChangedBy" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClientId" Type="Int32" />
+          <Property Name="ChangeDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CommitteeId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="MeetingChatMessage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MeetingId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="SentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Message" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Meeting" Relationship="LecOnlineDbModel.FK_MeetingChatMessages_ToMeetings" FromRole="MeetingChatMessage" ToRole="Meeting" />
+        </EntityType>
+        <Association Name="FK_MeetingChatMessages_ToMeetings">
+          <End Type="LecOnlineDbModel.Meeting" Role="Meeting" Multiplicity="1" />
+          <End Type="LecOnlineDbModel.MeetingChatMessage" Role="MeetingChatMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meeting">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MeetingChatMessage">
+              <PropertyRef Name="MeetingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="RequestAction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="RequestId" Type="Int32" Nullable="false" />
+          <Property Name="ActionType" Type="Byte" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ActionDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Request" Relationship="LecOnlineDbModel.FK_RequestActions_ToRequest" FromRole="RequestAction" ToRole="Request" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_RequestActions_ToRequest">
+          <End Type="LecOnlineDbModel.Request" Role="Request" Multiplicity="1" />
+          <End Type="LecOnlineDbModel.RequestAction" Role="RequestAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Request">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RequestAction">
+              <PropertyRef Name="RequestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_ToRequests_BaseRequestId">
+          <End Type="LecOnlineDbModel.Request" Role="Request" Multiplicity="0..1" />
+          <End Type="LecOnlineDbModel.Request" Role="BaseRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Request">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BaseRequest">
+              <PropertyRef Name="BaseRequestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LecOnlineDbModelStoreContainer" CdmEntityContainer="LecOnlineDbEntities">
+          <EntitySetMapping Name="Configurations">
+            <EntityTypeMapping TypeName="LecOnlineDbModel.Configuration">
+              <MappingFragment StoreEntitySet="Configuration">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="LecOnlineDbModel.Client">
+              <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+                <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Committees">
+            <EntityTypeMapping TypeName="LecOnlineDbModel.Committee">
+              <MappingFragment StoreEntitySet="Committees">
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="ViceChairman" ColumnName="ViceChairman" />
+                <ScalarProperty Name="Secretary" ColumnName="Secretary" />
+                <ScalarProperty Name="Chairman" ColumnName="Chairman" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ErrorLogs">
+            <EntityTypeMapping TypeName="LecOnlineDbModel.ErrorLog">
+              <MappingFragment StoreEntitySet="ErrorLog">
+                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Meetings">
+            <EntityTypeMapping TypeName="LecOnlineDbModel.Meeting">
+              <MappingFragment StoreEntitySet="Meetings">
+                <ScalarProperty Name="Resolution" ColumnName="Resolution" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="MeetingLog" ColumnName="MeetingLog" />
+                <ScalarProperty Name="Protocol" ColumnName="Protocol" />
+                <ScalarProperty Name="MeetingDate" ColumnName="MeetingDate" />
+                <ScalarProperty Name="RequestId" ColumnName="RequestId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RequestDocumentations">
+            <EntityTypeMapping TypeName="LecOnlineDbModel.RequestDocumentation">
+              <MappingFragment StoreEntitySet="RequestDocumentations">
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
+                <ScalarProperty Name="SignedBy" ColumnName="SignedBy" />
+                <ScalarProperty Name="Signed" ColumnName="Signed" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RequestId" ColumnName="RequestId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Requests">
+            <EntityTypeMapping TypeName="LecOnlineDbModel.Request">
+              <MappingFragment StoreEntitySet="Requests">
+                <ScalarProperty Name="BaseRequestId" ColumnName="BaseRequestId" />
+                <ScalarProperty Name="RequestType" ColumnName="RequestType" />
+                <ScalarProperty Name="LocalCentersQty" ColumnName="LocalCentersQty" />
+                <ScalarProperty Name="InternationStudies" ColumnName="InternationStudies" />
+                <ScalarProperty Name="TherapyDescription" ColumnName="TherapyDescription" />
+                <ScalarProperty Name="PopulationDescription" ColumnName="PopulationDescription" />
+                <ScalarProperty Name="EarlierStudy" ColumnName="EarlierStudy" />
+                <ScalarProperty Name="StudyPlannedFinishDate" ColumnName="StudyPlannedFinishDate" />
+                <ScalarProperty Name="StudyPlannedStartDate" ColumnName="StudyPlannedStartDate" />
+                <ScalarProperty Name="SubmittedBy" ColumnName="SubmittedBy" />
+                <ScalarProperty Name="StudyPhase" ColumnName="StudyPhase" />
+                <ScalarProperty Name="StudyBase" ColumnName="StudyBase" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="StudyApprovedBy" ColumnName="StudyApprovedBy" />
+                <ScalarProperty Name="StudyPerformerRegisteredAddress" ColumnName="StudyPerformerRegisteredAddress" />
+                <ScalarProperty Name="StudyPerformerStatutoryAddress" ColumnName="StudyPerformerStatutoryAddress" />
+                <ScalarProperty Name="StudyPerformer" ColumnName="StudyPerformer" />
+                <ScalarProperty Name="StudyProducer" ColumnName="StudyProducer" />
+                <ScalarProperty Name="StudySponsor" ColumnName="StudySponsor" />
+                <ScalarProperty Name="RandomizedPatientsCount" ColumnName="RandomizedPatientsCount" />
+                <ScalarProperty Name="LastComments" ColumnName="LastComments" />
+                <ScalarProperty Name="RejectionComments" ColumnName="RejectionComments" />
+                <ScalarProperty Name="RevokeComments" ColumnName="RevokeComments" />
+                <ScalarProperty Name="SubmissionComments" ColumnName="SubmissionComments" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="AcceptedBy" ColumnName="AcceptedBy" />
+                <ScalarProperty Name="Accepted" ColumnName="Accepted" />
+                <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
+                <ScalarProperty Name="ContactFax" ColumnName="ContactFax" />
+                <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="PatientsCount" ColumnName="PatientsCount" />
+                <ScalarProperty Name="PlannedDuration" ColumnName="PlannedDuration" />
+                <ScalarProperty Name="CentersQty" ColumnName="CentersQty" />
+                <ScalarProperty Name="StudyType" ColumnName="StudyType" />
+                <ScalarProperty Name="StudyCode" ColumnName="StudyCode" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="CommitteeId" ColumnName="CommitteeId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MeetingAttendees">
+            <EntityTypeMapping TypeName="LecOnlineDbModel.MeetingAttendee">
+              <MappingFragment StoreEntitySet="MeetingAttendees">
+                <ScalarProperty Name="Vote" ColumnName="Vote" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="MeetingId" ColumnName="MeetingId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChangesLogs">
+            <EntityTypeMapping TypeName="LecOnlineDbModel.ChangesLog">
+              <MappingFragment StoreEntitySet="ChangesLog">
+                <ScalarProperty Name="CommitteeId" ColumnName="CommitteeId" />
+                <ScalarProperty Name="ChangeDescription" ColumnName="ChangeDescription" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="ChangedBy" ColumnName="ChangedBy" />
+                <ScalarProperty Name="Changed" ColumnName="Changed" />
+                <ScalarProperty Name="ObjectId" ColumnName="ObjectId" />
+                <ScalarProperty Name="ObjectType" ColumnName="ObjectType" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MeetingChatMessages">
+            <EntityTypeMapping TypeName="LecOnlineDbModel.MeetingChatMessage">
+              <MappingFragment StoreEntitySet="MeetingChatMessages">
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="MeetingId" ColumnName="MeetingId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RequestActions">
+            <EntityTypeMapping TypeName="LecOnlineDbModel.RequestAction">
+              <MappingFragment StoreEntitySet="RequestActions">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="ActionDate" ColumnName="ActionDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ActionType" ColumnName="ActionType" />
+                <ScalarProperty Name="RequestId" ColumnName="RequestId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,104 @@
+﻿@using Microsoft.AspNet.Identity.Owin
+@using LecOnline.Models.Client
+@model ClientsListViewModel
+@{
+    var context = this.Context.GetOwinContext();
+    var sidebarManager = context.Get<SidebarManager>();
+    var settingsItem = sidebarManager.FindById("Settings");
+    settingsItem.IsOpen = true;
+    settingsItem.IsActive = true;
+    var clientsItem = sidebarManager.FindById("Clients");
+    clientsItem.IsActive = true;
+
+    int pageSize = UIConfiguration.PageSize;
+    if (!int.TryParse(Request["PageSize"], out pageSize))
+    {
+        pageSize = UIConfiguration.PageSize;
+    }
+    
+    var grid = new WebGrid(this.Model.Items,
+        rowsPerPage: pageSize,
+        defaultSort: "CompanyName");
+    var dbContext = new ApplicationDbContext();
+}
+<div class="page-header">
+    <h1>
+        @Resources.PageClientsTitle
+        @*<small>
+            <i class="ace-icon fa fa-angle-double-right"></i>
+            @Resources.PageAllRequestsTitle
+        </small>*@
+    </h1>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+
+        <a href="@Url.Action("Create")" class="btn btn-sm btn-primary">
+            <i class="ace-icon fa fa-plus align-top bigger-125"></i>
+            @Resources.Create
+        </a>
+    </div>
+</div>
+<div class="hr hr-dotted hr-16"></div>
+<div class="row">
+    <div class="col-sm-12">
+        @using (Html.BeginForm("Index", "Client", FormMethod.Get, new { @class = "form-inline" }))
+        {
+            @Html.EditorFor(_ => _.Filter)
+            <button type="submit" class="btn btn-default">@Resources.Filter</button>
+        }
+    </div>
+</div>
+<div class="hr hr-dotted hr-16"></div>
+<div class="dataTables_wrapper">
+    <table class="table table-striped table-bordered table-hover dataTable">
+        <thead>
+            <tr>
+                <th class="sorting">
+                    <a href="@grid.GetSortUrl("CompanyName")">
+                        @Resources.FieldCompanyName
+                    </a>
+                </th>
+                <th class="sorting">
+                    <a href="@grid.GetSortUrl("ContactPerson")">
+                        @Resources.FieldContactPerson
+                    </a>
+                </th>
+
+                <th class="sorting">
+                    <a href="@grid.GetSortUrl("ContactEmail")">
+                        @Resources.FieldEmail
+                    </a>
+                </th>
+
+                <th class="sorting">
+                    <a href="@grid.GetSortUrl("ContactPhone")">
+                        @Resources.FieldPhone
+                    </a>
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var clientRow in grid.Rows)
+            {
+                LecOnline.Core.Client client = clientRow.Value;
+                <tr>
+                    <td>
+                        <a href="@Url.Action("Edit", new { id = client.Id })">@client.CompanyName</a>
+                    </td>
+                    <td>@client.ContactPerson</td>
+                    <td>@client.ContactEmail</td>
+                    <td>@client.ContactPhone</td>
+
+                    <td>
+                        @Html.Partial("_GridItemMenu", client)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @Html.Partial("_Pager", grid)
+</div>

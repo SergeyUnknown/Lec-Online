@@ -1,0 +1,113 @@
+﻿@using Microsoft.AspNet.Identity
+@{
+    var hasNotifications = System.Configuration.ConfigurationManager.AppSettings["HasNotifications"] == "true";
+}
+@if (Request.IsAuthenticated)
+{
+    var user = (System.Security.Claims.ClaimsIdentity)this.User.Identity;
+    var name = user.GetUserName();
+    if (hasNotifications)
+    {
+    <li class="light-blue">
+        <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="true">
+            <i class="ace-icon fa fa-bell"></i>
+            <span class="badge badge-warning">8</span>
+        </a>
+        <ul class="dropdown-menu-right dropdown-navbar navbar-blue dropdown-menu dropdown-caret dropdown-close">
+            <li class="dropdown-header">
+                <i class="ace-icon fa fa-exclamation-triangle"></i>
+                8 Notifications
+            </li>
+
+            <li class="dropdown-content ace-scroll" style="position: relative;">
+                <div class="scroll-track" style="display: none;"><div class="scroll-bar"></div></div><div class="scroll-content">
+                    <ul class="dropdown-menu dropdown-navbar navbar-pink">
+                        <li>
+                            <a href="#">
+                                <div class="clearfix">
+                                    <span class="pull-left">
+                                        <i class="btn btn-xs no-hover btn-pink fa fa-comment"></i>
+                                        New Comments
+                                    </span>
+                                    <span class="pull-right badge badge-info">+12</span>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <i class="btn btn-xs btn-primary fa fa-user"></i>
+                                Bob just signed up as an editor ...
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <div class="clearfix">
+                                    <span class="pull-left">
+                                        <i class="btn btn-xs no-hover btn-success fa fa-shopping-cart"></i>
+                                        New Orders
+                                    </span>
+                                    <span class="pull-right badge badge-success">+8</span>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <div class="clearfix">
+                                    <span class="pull-left">
+                                        <i class="btn btn-xs no-hover btn-info fa fa-twitter"></i>
+                                        Followers
+                                    </span>
+                                    <span class="pull-right badge badge-info">+11</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="dropdown-footer">
+                <a href="#">
+                    See all notifications
+                    <i class="ace-icon fa fa-arrow-right"></i>
+                </a>
+            </li>
+        </ul>
+    </li>        
+    }
+    <li class="light-blue">
+        <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+            <img class="nav-user-photo" src="/Content/Ace/avatars/user.jpg" alt="Jason's Photo">
+            <span class="user-info">
+                <small>@Resources.Welcome</small> @name
+            </span>
+            <i class="ace-icon fa fa-caret-down"></i>
+        </a>
+        <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+            <li><a href="@Url.Action("Index", "Manage")"><i class="ace-icon fa fa-cog"></i> @Resources.Settings</a></li>
+            <li><a href="@Url.Action("UserProfile", "Manage")"><i class="ace-icon fa fa-user"></i> @Resources.Profile</a></li>
+            <li class="divider"></li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()"><i class="ace-icon fa fa-power-off"></i> @Resources.Logoff</a></li>
+        </ul>
+    </li>
+
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+    {
+        @Html.AntiForgeryToken()
+    }
+    @*<ul class="nav navbar-nav navbar-right">
+        <li>
+            @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+        </li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">@Resources.Logoff</a></li>
+    </ul>*@
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink(Resources.Registration, "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink(Resources.Login, "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

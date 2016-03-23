@@ -1,0 +1,10 @@
+D:\Repos\GitHub\LECTest\LecOnline.Db\bin\Debug\LecOnline.Db.dacpac
+D:\Repos\GitHub\LECTest\LecOnline.Db\bin\Debug\LecOnline.Db.dll
+D:\Repos\GitHub\LECTest\LecOnline.Db\bin\Debug\LecOnline.Db.pdb
+D:\Repos\GitHub\LECTest\LecOnline.Db\obj\Debug\LecOnline.Db.dll
+D:\Repos\GitHub\LECTest\LecOnline.Db\obj\Debug\LecOnline.Db.pdb
+D:\Repos\GitHub\Lec-Online\LecOnline.Db\bin\Debug\LecOnline.Db.dacpac
+D:\Repos\GitHub\Lec-Online\LecOnline.Db\bin\Debug\LecOnline.Db.dll
+D:\Repos\GitHub\Lec-Online\LecOnline.Db\bin\Debug\LecOnline.Db.pdb
+D:\Repos\GitHub\Lec-Online\LecOnline.Db\obj\Debug\LecOnline.Db.dll
+D:\Repos\GitHub\Lec-Online\LecOnline.Db\obj\Debug\LecOnline.Db.pdb

@@ -1,0 +1,35 @@
+﻿CREATE TABLE [dbo].[AspNetUsers]
+(
+    Id               NVARCHAR (128) NOT NULL,
+    [UserName]             NVARCHAR (32)          NOT NULL,
+    [Email]                NVARCHAR (256)         NULL,
+    [EmailConfirmed]       BIT					  NOT NULL,
+    [PasswordHash]         NVARCHAR (100)         NULL,
+    [SecurityStamp]        NVARCHAR (100)         NULL,
+    [PhoneNumber]          NVARCHAR (25)          NULL,
+    [PhoneNumberConfirmed] BIT					  NOT NULL,
+    [TwoFactorEnabled]     BIT					  NOT NULL,
+    [LockoutEndDateUtc]    DATETIME               NULL,
+    [LockoutEnabled]       BIT					  NOT NULL,
+    [AccessFailedCount]    INT                    NOT NULL,
+	ClientId				INT					  NULL,
+	CommitteeId				INT					  NULL,
+    FirstName				NVARCHAR (50)         NULL,
+	LastName				NVARCHAR (50)         NULL,
+	PatronymicName			NVARCHAR (50)         NULL,
+	City					NVARCHAR (50)         NULL,
+	[Address]				NVARCHAR (100)        NULL,
+	Company					NVARCHAR (100)        NULL,
+	ContactPhone			NVARCHAR (25)         NULL,
+	Degree					NVARCHAR (100)        NULL,
+	Created					DATETIME			NOT NULL default(getutcdate()),
+	Modified				DATETIME			NOT NULL default(getutcdate()),
+
+    CONSTRAINT [PK_AspNetUsers_Id] PRIMARY KEY CLUSTERED (Id ASC),
+    CONSTRAINT [UK_AspNetUsers_UserName] UNIQUE NONCLUSTERED ([UserName] ASC),
+
+	CONSTRAINT [FK_AspNetUsers_ToClients] FOREIGN KEY (ClientId) REFERENCES Clients(Id), 
+	CONSTRAINT [FK_AspNetUsers_ToCommittees] FOREIGN KEY (CommitteeId) REFERENCES Committees(Id), 
+    
+	CONSTRAINT [CK_AspNetUsers_ClientOrCommittee] CHECK (NOT (ClientId IS NOT NULL AND CommitteeId IS NOT NULL)),
+);

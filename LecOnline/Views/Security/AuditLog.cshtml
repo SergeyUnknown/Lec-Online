@@ -1,0 +1,124 @@
+﻿@model LecOnline.Models.Security.ChangesListViewModel
+@{
+    var context = this.Context.GetOwinContext();
+    var sidebarManager = context.Get<SidebarManager>();
+    var settingsItem = sidebarManager.FindById("Security");
+    settingsItem.IsOpen = true;
+    settingsItem.IsActive = true;
+    var committeesItem = sidebarManager.FindById("Security.Audit");
+    committeesItem.IsActive = true;
+
+    int pageSize = UIConfiguration.PageSize;
+    if (!int.TryParse(Request["PageSize"], out pageSize))
+    {
+        pageSize = UIConfiguration.PageSize;
+    }
+
+    var grid = new WebGrid(this.Model.Items,
+        rowsPerPage: pageSize,
+        defaultSort: "Created");
+
+    if (this.Request.QueryString[grid.SortDirectionFieldName].IsEmpty())
+    {
+        grid.SortDirection = SortDirection.Descending;
+    }
+}
+<div class="page-header">
+    <h1>
+        @Resources.PageAuditLogTitle
+        @*<small>
+                <i class="ace-icon fa fa-angle-double-right"></i>
+                @Resources.PageAllRequestsTitle
+            </small>*@
+    </h1>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        @using (Html.BeginForm("AuditLog", "Security", FormMethod.Get, new { @class = "form-inline" }))
+        {
+            @Html.EditorFor(_ => _.Filter)
+            <button type="submit" class="btn btn-default">@Resources.Filter</button>
+        }
+    </div>
+</div>
+
+<div class="dataTables_wrapper">
+    <table class="table table-striped table-bordered table-hover dataTable">
+        <thead>
+            <tr>
+                <th class="sorting">
+                    <a href="@grid.GetSortUrl("Id")">
+                        @Resources.FieldId
+                    </a>
+                </th>
+                <th class="sorting">
+                    <a href="@grid.GetSortUrl("ObjectType")">
+                        @Resources.FieldObjectType
+                    </a>
+                </th>
+                <th class="sorting">
+                    <a href="@grid.GetSortUrl("ObjectId")">
+                        @Resources.FieldObjectId
+                    </a>
+                </th>
+                <th class="sorting">
+                    <a href="@grid.GetSortUrl("Changed")">
+                        @Resources.FieldChangedDate
+                    </a>
+                </th>
+                <th class="sorting">
+                    <a href="@grid.GetSortUrl("ChangedBy")">
+                        @Resources.FieldChangedBy
+                    </a>
+                </th>
+                <th class="sorting">
+                    <a href="@grid.GetSortUrl("ChangeDescription")">
+                        @Resources.FieldChangeDescription
+                    </a>
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var clientRow in grid.Rows)
+            {
+                LecOnline.Core.ChangesLog logItem = clientRow.Value;
+                <tr>
+
+                    <td>
+                        <a href="@Url.Action("ChangeDetail", new { id = logItem.Id })">@logItem.Id</a>
+                    </td>
+                    <td>
+                        @logItem.ObjectType
+                    </td>
+                    <td>
+                        @logItem.ObjectId
+                    </td>
+                    <td>
+                        @logItem.Changed.ToString(UIConfiguration.DateFormat)
+                    </td>
+                    <td>
+                        @Html.Partial("_UserByEmail", logItem.ChangedBy ?? string.Empty)
+                    </td>
+                    <td>
+                        @if (logItem.ChangeDescription.Length > 300)
+                        {
+                            @logItem.ChangeDescription.Remove(300)<text>...</text>
+                        }
+                        else
+                        {
+                            @logItem.ChangeDescription
+                        }
+                    </td>
+
+                    <td>
+                        @Html.Partial("_GridItemMenu", logItem)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @Html.Partial("_Pager", grid)
+</div>

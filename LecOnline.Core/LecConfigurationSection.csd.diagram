@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<minimalLanguageDiagram dslVersion="1.0.0.0" Id="32308bd8-221a-4423-9edf-1722e61f1e68" absoluteBounds="0, 0, 11, 8.5" name="LecConfigurationSection">
+  <configurationSectionModelMoniker Id="7f087dec-3583-4f93-8ee0-51fb2144caa7" />
+  <nestedChildShapes>
+    <configurationSectionShape Id="6a21b690-80c0-458e-b6dd-9abc0bb89783" absoluteBounds="2.625, 0.75, 1.5, 1.9802864583333331" outlineDashStyle="Solid" outlineThickness="0.01">
+      <configurationSectionMoniker name="/7f087dec-3583-4f93-8ee0-51fb2144caa7/LecOnlineConfigurationSection" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c54608ca-1f41-41be-a890-9dc184fe6d4d" absoluteBounds="2.64, 1.1600000000000001, 1.4700000000000002, 1.2108968098958333" name="AttributeProperties" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="4b4cd41c-4dc3-4151-a9ef-76bbf5248a04" absoluteBounds="2.64, 2.380896809895833, 1.4700000000000002, 0.2493896484375" name="ElementProperties" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </configurationSectionShape>
+  </nestedChildShapes>
+</minimalLanguageDiagram>

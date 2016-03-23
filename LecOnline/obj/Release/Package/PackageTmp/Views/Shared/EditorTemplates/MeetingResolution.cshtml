@@ -1,0 +1,27 @@
+﻿@model MeetingResolution?
+@{
+    var values = (MeetingResolution[])Enum.GetValues(typeof(MeetingResolution));
+    IEnumerable<SelectListItem> items;
+    if (this.ViewData.ModelMetadata.IsNullableValueType)
+    {
+        items = new List<SelectListItem>()
+        {
+            new SelectListItem() { Value = "", Text = Resources.NotSpecified }
+        };
+    } 
+    else
+    {
+        items = new List<SelectListItem>();
+    }
+    
+    var listItems = from v in values 
+                    select new SelectListItem() 
+                    { 
+                        Text = MeetingResolutionStrings.ResourceManager.GetString(v.ToString()),
+                        Value = v.ToString(),
+                        Selected = (v == this.Model),
+                    };
+    items = items.Union(listItems);
+}
+@Html.DropDownList("", items, ViewData["htmlAttributes"])
+

@@ -1,0 +1,193 @@
+﻿@model LecOnline.Models.Request.MeetingRoomViewModel
+@{
+    var context = this.Context.GetOwinContext();
+    var userManager = context.Get<ApplicationUserManager>();
+    var attendees = from a in this.Model.Attendees
+                    let user = userManager.FindByIdAsync(a.UserId).Result
+                    select new { UserId = a.UserId, FullName = user.LastName + " " + user.FirstName, Vote = a.Vote };
+    var serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+}
+@section scripts {
+    <script type="text/javascript" src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/knockout-3.2.0.js"></script>
+    <script type="text/javascript" src="~/Scripts/knockout.validation.js"></script>
+    <script type="text/javascript" src="~/Scripts/moment-with-locales.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/komoment.js"></script>
+    <script type="text/javascript" src="~/signalr/hubs"></script>
+    <script type="text/javascript">
+        var users = @Html.Raw(serializer.Serialize(attendees));
+        function getName(id) {
+            var filteredUsers = users.filter(function (item) {
+                return item.UserId == id;
+            });
+            if (filteredUsers.length == 0) {
+                return '';
+            }
+
+            return filteredUsers[0].FullName;
+        }
+        function MessageViewModel(id, username, time, message) {
+            this.id = id;
+            this.username = username;
+            this.time = ko.observable(new moment(time)).extend({ moment: { utc: true } });
+            this.message = message;
+        }
+
+        function UserViewModel(id, username, status) {
+            this.id = id;
+            this.username = username;
+            this.status = ko.observable(status);
+        }
+
+        function ChatViewModel(id, enabled, votingStarted, votePlaced) {
+            this.requestId = id;
+            this.enabled = ko.observable(enabled);
+            this.votingStarted = ko.observable(votingStarted);
+            this.votePlaced = ko.observable(votePlaced);
+            this.messages = ko.observableArray();
+            this.currentMessage = ko.observable();
+            this.participants = ko.observableArray(users.map(function (item) {
+                var vote = item.Vote;
+                if (votingStarted && vote === null) {
+                    vote = 0;
+                }
+
+                return new UserViewModel(item.UserId, item.FullName, vote);
+            }));
+            this.loading = ko.observable(true);
+        }
+
+        ChatViewModel.prototype.connect = function () {
+            var self = this;
+            $.connection.hub.error(function (message) {
+                console.error(message);
+            });
+            $.connection.chat.client.message = function (id, time, message) {
+                var username = getName(id);
+                self.messages.push(new MessageViewModel(id, username, time, message));
+                $("#chat .messages ul")[0].scrollTop = $("#chat .messages ul")[0].scrollHeight;
+            };
+            $.connection.chat.client.votingStarted = function () {
+                self.disableChat();
+                self.votingStarted(true);
+            };
+            $.connection.chat.client.vote = function (userId, voteStatus) {
+                var myself = self.participants().filter(function (item) {
+                    return item.id == userId;
+                });
+                myself[0].status(voteStatus);
+            };
+            $.connection.chat.client.error = function (message) {
+                console.error(message);
+            };
+            $.connection.hub.start().done(function () {
+                console.log("connected");
+                $.connection.chat.server.join(self.requestId).done(function () {
+                    self.loading(false);
+                }).fail(function (error) {
+                    console.error("Connection to meeting failed. " + error);
+                });
+            }).fail(function (error) {
+                console.error("Connection failed. " + error)
+            });
+        }
+        ChatViewModel.prototype.couldSend = function () {
+            var message = this.currentMessage();
+            if (message == null || message.trim() == '') {
+                return false;
+            }
+
+            if (!this.enabled()) {
+                return false;
+            }
+
+            return true;
+        }
+        ChatViewModel.prototype.disableChat = function () {
+            this.enabled(false);
+        }
+        ChatViewModel.prototype.send = function () {
+            if (!this.couldSend()) {
+                return;
+            }
+
+            var message = this.currentMessage();
+            this.currentMessage('');
+            $.connection.chat.server.send(this.requestId, message);
+        }
+
+        var requestId = @this.Model.Id;
+        var chatEnabled = @Html.Raw(serializer.Serialize(this.Model.IsChatEnabled));
+        var votingStarted = @Html.Raw(serializer.Serialize(this.Model.VotingStarted));
+        var votePlaced = @Html.Raw(serializer.Serialize(this.Model.VotePlaced));
+        var model = new ChatViewModel(requestId, chatEnabled, votingStarted, votePlaced);
+        ko.applyBindings(model, $("#chat")[0]);
+        $(document).ready(function ($) {
+            model.connect();
+        });
+</script>
+}
+<div class="page-header">
+    <h1>
+        @Resources.PageRequestsTitle
+        <small>
+            <i class="ace-icon fa fa-angle-double-right"></i>
+            @Resources.PageAllRequestsTitle
+        </small>
+    </h1>
+</div>
+<div class="form-horizontal">
+    <h4>@Resources.MeetingRoom @(Model.Title)</h4>
+    <hr />
+</div>
+<div class="row" id="chat">
+    <div class="col-sm-6">
+        <div>
+            <div class="message-loading-overlay" data-bind="visible: loading">
+                <i class="fa fa-spinner fa-spin"></i>
+            </div>
+            <div class="messages" style="display: none;" data-bind="visible: !loading()">
+                <ul data-bind="foreach: messages">
+                    <li>
+                        [<span class="username" data-bind="date: { value: time, format: 'HH:mm:ss' }"></span> <span class="username" data-bind="text: username"></span>]
+                        <span class="username" data-bind="text: message"></span>
+                    </li>
+                </ul>
+                <div class="input-box">
+                    <form data-bind="visible: enabled">
+                        <input type="text" data-bind="textInput: currentMessage, enable: enabled" class="input-xxlarge" /> <button type="submit" data-bind="click: send, enable: $root.couldSend()" class="btn btn-sm btn-primary">@Resources.SendMe</button>
+                    </form>
+                    <form data-bind="visible: votingStarted() && !votePlaced()">
+                        <a class="btn btn-sm btn-success" href="@Url.Action("VoteAccept", new { id = this.Model.Id })">@Resources.VoteAccept</a>
+                        <a class="btn btn-sm btn-danger" href="@Url.Action("VoteReject", new { id = this.Model.Id })">@Resources.VoteReject</a>
+                        <a class="btn btn-sm btn-warning" href="@Url.Action("VoteAbstain", new { id = this.Model.Id })">@Resources.Abstain</a>
+                    </form>
+                    <form data-bind="visible: votingStarted() && votePlaced()">
+                        @Resources.YouAlreadyPlaceVote
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-2">
+        <ul style="display: none;" data-bind="foreach: participants, visible: !loading() || participants()">
+            <li>
+                <!-- ko if: status() != null -->
+                <!-- ko if: status() == 0 -->
+                <i class="fa fa-clock-o info"></i>
+                <!-- /ko -->
+                <!-- ko if: status() == 1 -->
+                <i class="fa fa-thumbs-up success"></i>
+                <!-- /ko -->
+                <!-- ko if: status() == 2 -->
+                <i class="fa fa-ban"></i>
+                <!-- /ko -->
+                <!-- ko if: status() == 3 -->
+                <i class="fa fa-minus"></i>
+                <!-- /ko -->
+                <!-- /ko -->
+                <span class="username" data-bind="text: username"></span>
+            </li>
+        </ul>
+    </div>
+</div>

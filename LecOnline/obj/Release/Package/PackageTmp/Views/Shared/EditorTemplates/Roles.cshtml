@@ -1,0 +1,38 @@
+﻿@model string[]
+@{
+    var modelValues = this.Model ?? new string[0];
+    var items = new List<SelectListItem>();
+    string[] values = ApplicationUserManager.GetManagedRoles(this.User);
+    
+    for (int i = 0; i < values.Length; i++)
+    {
+        var item = new SelectListItem() 
+        { 
+            Value = values[i], 
+            Text = Resources.ResourceManager.GetString("Role" + values[i]),
+            Selected = modelValues.Contains(values[i])
+        };
+        items.Add(item);
+    }
+
+    var htmlAttributes = ViewData["htmlAttributes"];
+    IDictionary<string, object> parameters = null;
+    if (htmlAttributes != null)
+    {
+        var dictionary = new RouteValueDictionary(htmlAttributes);
+        dictionary.Add("multiple", string.Empty);
+        if (dictionary.ContainsKey("class"))
+        {
+            var className = (string)dictionary["class"];
+            var classNames = className.Split(' ');
+            dictionary["class"] = string.Join(" ", classNames.Union("chosen-select form-control".Split(' ')));
+        }
+        else
+        { 
+            dictionary.Add("class", "chosen-select form-control");
+        }
+        dictionary.Add("data_placeholder", Resources.ChooseUserRole);
+        parameters = dictionary;
+    }
+}
+@this.Html.ListBox("", items, parameters)

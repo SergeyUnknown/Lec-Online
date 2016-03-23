@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LecOnlineDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ChangesLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ObjectType" Type="int" Nullable="false" />
+    <Property Name="ObjectId" Type="int" Nullable="false" />
+    <Property Name="Changed" Type="datetime" Nullable="false" />
+    <Property Name="ChangedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClientId" Type="int" />
+    <Property Name="CommitteeId" Type="int" />
+    <Property Name="ChangeDescription" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Clients">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ContactPerson" Type="nvarchar" MaxLength="200" />
+    <Property Name="ContactEmail" Type="nvarchar" MaxLength="100" />
+    <Property Name="ContactPhone" Type="nvarchar" MaxLength="100" />
+    <Property Name="Notes" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Committees">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Notes" Type="nvarchar(max)" />
+    <Property Name="Chairman" Type="nvarchar" MaxLength="128" />
+    <Property Name="ViceChairman" Type="nvarchar" MaxLength="128" />
+    <Property Name="Secretary" Type="nvarchar" MaxLength="128" />
+    <Property Name="City" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="Configuration">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="Value" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="ErrorLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="32" />
+    <Property Name="Created" Type="datetime" Nullable="false" />
+    <Property Name="ErrorMessage" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="MeetingAttendees">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MeetingId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Status" Type="tinyint" />
+    <Property Name="Vote" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="MeetingChatMessages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MeetingId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="SentDate" Type="datetime" Nullable="false" />
+    <Property Name="Message" Type="nvarchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="Meetings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RequestId" Type="int" Nullable="false" />
+    <Property Name="MeetingDate" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="Protocol" Type="nvarchar(max)" />
+    <Property Name="MeetingLog" Type="nvarchar(max)" />
+    <Property Name="Resolution" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RequestActions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RequestId" Type="int" Nullable="false" />
+    <Property Name="ActionType" Type="tinyint" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="ActionDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RequestDocumentations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RequestId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="FileType" Type="tinyint" Nullable="false" />
+    <Property Name="Content" Type="varbinary(max)" Nullable="false" />
+    <Property Name="Created" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="Signed" Type="datetime" />
+    <Property Name="SignedBy" Type="nvarchar" MaxLength="32" />
+  </EntityType>
+  <EntityType Name="Requests">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClientId" Type="int" Nullable="false" />
+    <Property Name="CommitteeId" Type="int" />
+    <Property Name="RequestType" Type="tinyint" Nullable="false" />
+    <Property Name="BaseRequestId" Type="int" />
+    <Property Name="Title" Type="nvarchar" MaxLength="512" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="EarlierStudy" Type="nvarchar(max)" />
+    <Property Name="PopulationDescription" Type="nvarchar(max)" />
+    <Property Name="TherapyDescription" Type="nvarchar(max)" />
+    <Property Name="InternationStudies" Type="nvarchar(max)" />
+    <Property Name="StudyCode" Type="nvarchar" MaxLength="20" />
+    <Property Name="StudyType" Type="int" />
+    <Property Name="StudyPhase" Type="int" Nullable="false" />
+    <Property Name="CentersQty" Type="int" Nullable="false" />
+    <Property Name="LocalCentersQty" Type="int" Nullable="false" />
+    <Property Name="PlannedDuration" Type="int" Nullable="false" />
+    <Property Name="PatientsCount" Type="int" Nullable="false" />
+    <Property Name="RandomizedPatientsCount" Type="int" />
+    <Property Name="StudyBase" Type="nvarchar" MaxLength="256" />
+    <Property Name="StudySponsor" Type="nvarchar" MaxLength="256" />
+    <Property Name="StudyProducer" Type="nvarchar" MaxLength="256" />
+    <Property Name="StudyPerformer" Type="nvarchar" MaxLength="256" />
+    <Property Name="StudyPerformerStatutoryAddress" Type="nvarchar" MaxLength="300" />
+    <Property Name="StudyPerformerRegisteredAddress" Type="nvarchar" MaxLength="300" />
+    <Property Name="StudyApprovedBy" Type="nvarchar" MaxLength="256" />
+    <Property Name="StudyPlannedStartDate" Type="datetime" />
+    <Property Name="StudyPlannedFinishDate" Type="datetime" />
+    <Property Name="ContactPerson" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="ContactPhone" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="ContactFax" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="ContactEmail" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="SubmissionComments" Type="nvarchar" MaxLength="1000" />
+    <Property Name="RevokeComments" Type="nvarchar" MaxLength="1000" />
+    <Property Name="RejectionComments" Type="nvarchar" MaxLength="1000" />
+    <Property Name="LastComments" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Created" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="SentDate" Type="datetime" />
+    <Property Name="SubmittedBy" Type="nvarchar" MaxLength="32" />
+    <Property Name="Accepted" Type="datetime" />
+    <Property Name="AcceptedBy" Type="nvarchar" MaxLength="32" />
+    <Property Name="Status" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_MeetingAttendees_ToMeetings">
+    <End Role="Meetings" Type="Self.Meetings" Multiplicity="1" />
+    <End Role="MeetingAttendees" Type="Self.MeetingAttendees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Meetings">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MeetingAttendees">
+        <PropertyRef Name="MeetingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MeetingChatMessages_ToMeetings">
+    <End Role="Meetings" Type="Self.Meetings" Multiplicity="1" />
+    <End Role="MeetingChatMessages" Type="Self.MeetingChatMessages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Meetings">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MeetingChatMessages">
+        <PropertyRef Name="MeetingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Meetings_ToRequests">
+    <End Role="Requests" Type="Self.Requests" Multiplicity="1" />
+    <End Role="Meetings" Type="Self.Meetings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Requests">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Meetings">
+        <PropertyRef Name="RequestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Request_ToClients">
+    <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+    <End Role="Requests" Type="Self.Requests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Requests">
+        <PropertyRef Name="ClientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Request_ToCommittees">
+    <End Role="Committees" Type="Self.Committees" Multiplicity="0..1" />
+    <End Role="Requests" Type="Self.Requests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Committees">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Requests">
+        <PropertyRef Name="CommitteeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Request_ToRequests_BaseRequestId">
+    <End Role="Requests" Type="Self.Requests" Multiplicity="0..1" />
+    <End Role="Requests1" Type="Self.Requests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Requests">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Requests1">
+        <PropertyRef Name="BaseRequestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RequestActions_ToRequest">
+    <End Role="Requests" Type="Self.Requests" Multiplicity="1" />
+    <End Role="RequestActions" Type="Self.RequestActions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Requests">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RequestActions">
+        <PropertyRef Name="RequestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RequestDocumentations_ToRequests">
+    <End Role="Requests" Type="Self.Requests" Multiplicity="1" />
+    <End Role="RequestDocumentations" Type="Self.RequestDocumentations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Requests">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RequestDocumentations">
+        <PropertyRef Name="RequestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LecOnlineDbModelStoreContainer">
+    <EntitySet Name="ChangesLog" EntityType="Self.ChangesLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Committees" EntityType="Self.Committees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Configuration" EntityType="Self.Configuration" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ErrorLog" EntityType="Self.ErrorLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MeetingAttendees" EntityType="Self.MeetingAttendees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MeetingChatMessages" EntityType="Self.MeetingChatMessages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Meetings" EntityType="Self.Meetings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RequestActions" EntityType="Self.RequestActions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RequestDocumentations" EntityType="Self.RequestDocumentations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Requests" EntityType="Self.Requests" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_MeetingAttendees_ToMeetings" Association="Self.FK_MeetingAttendees_ToMeetings">
+      <End Role="Meetings" EntitySet="Meetings" />
+      <End Role="MeetingAttendees" EntitySet="MeetingAttendees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MeetingChatMessages_ToMeetings" Association="Self.FK_MeetingChatMessages_ToMeetings">
+      <End Role="Meetings" EntitySet="Meetings" />
+      <End Role="MeetingChatMessages" EntitySet="MeetingChatMessages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Meetings_ToRequests" Association="Self.FK_Meetings_ToRequests">
+      <End Role="Requests" EntitySet="Requests" />
+      <End Role="Meetings" EntitySet="Meetings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Request_ToClients" Association="Self.FK_Request_ToClients">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="Requests" EntitySet="Requests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Request_ToCommittees" Association="Self.FK_Request_ToCommittees">
+      <End Role="Committees" EntitySet="Committees" />
+      <End Role="Requests" EntitySet="Requests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Request_ToRequests_BaseRequestId" Association="Self.FK_Request_ToRequests_BaseRequestId">
+      <End Role="Requests" EntitySet="Requests" />
+      <End Role="Requests1" EntitySet="Requests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RequestActions_ToRequest" Association="Self.FK_RequestActions_ToRequest">
+      <End Role="Requests" EntitySet="Requests" />
+      <End Role="RequestActions" EntitySet="RequestActions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RequestDocumentations_ToRequests" Association="Self.FK_RequestDocumentations_ToRequests">
+      <End Role="Requests" EntitySet="Requests" />
+      <End Role="RequestDocumentations" EntitySet="RequestDocumentations" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

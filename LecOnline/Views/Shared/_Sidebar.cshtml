@@ -1,0 +1,60 @@
+﻿@{
+    var context = this.Context.GetOwinContext();
+    var sidebarManager = context.Get<SidebarManager>();
+    var rootItem = sidebarManager.GetRootSidebarItem();
+}
+<div id="sidebar" class="sidebar responsive" data-sidebar="true" data-sidebar-scroll="true" data-sidebar-hover="true">
+    <script type="text/javascript">
+	    try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+    </script>
+    @if (this.User.IsInRole(RoleNames.Administrator))
+    { 
+    <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+        <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+            <a class="btn btn-success" href="@Url.Action("Dashboard", "Home")">
+                <i class="ace-icon fa fa-tachometer"></i>
+            </a>
+
+            <a class="btn btn-info" href="@Url.Action("Index", "Request")">
+                <i class="ace-icon fa fa-file-text"></i>
+            </a>
+
+            <!-- #section:basics/sidebar.layout.shortcuts -->
+            <a class="btn btn-warning" href="@Url.Action("Index", "User")">
+                <i class="ace-icon fa fa-users"></i>
+            </a>
+
+            <a class="btn btn-danger" href="@Url.Action("AuditLog", "Security")">
+                <i class="ace-icon fa fa-shield"></i>
+            </a>
+
+            <!-- /section:basics/sidebar.layout.shortcuts -->
+        </div>
+
+        <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+            <span class="btn btn-success"></span>
+
+            <span class="btn btn-info"></span>
+
+            <span class="btn btn-warning"></span>
+
+            <span class="btn btn-danger"></span>
+        </div>
+    </div><!-- /.sidebar-shortcuts -->
+    }
+    <ul class="nav nav-list">
+    @foreach (var sidebarItem in rootItem.Items)
+    {
+        @Html.Partial("_SidebarItem", sidebarItem)
+    }
+    </ul><!-- /.nav-list -->
+    <!-- #section:basics/sidebar.layout.minimize -->
+    <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+        <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+    </div>
+
+    <!-- /section:basics/sidebar.layout.minimize -->
+    <script type="text/javascript">
+		try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+    </script>
+</div>

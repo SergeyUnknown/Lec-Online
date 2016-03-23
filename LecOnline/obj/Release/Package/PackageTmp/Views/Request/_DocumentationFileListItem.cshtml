@@ -1,0 +1,15 @@
+﻿@model LecOnline.Models.Request.RequestDocumentationFileViewModel
+@{
+    var file = this.Model;
+}
+<li>
+    <a class="btn btn-xs btn-primary" href="@Url.Action("DownloadFile", new { id = file.Id })">
+        <i class="ace-icon fa fa-download bigger-110 icon-only"></i>
+        @*@Resources.Download*@
+    </a>
+    <a class="btn btn-xs btn-danger" href="@Url.Action("DeleteFile", new { id = file.Id })">
+        <i class="ace-icon fa fa-times bigger-110 icon-only"></i>
+        @*@Resources.Delete*@
+    </a>
+    @file.Name
+</li>

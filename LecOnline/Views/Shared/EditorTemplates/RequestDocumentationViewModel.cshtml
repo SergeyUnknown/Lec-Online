@@ -1,0 +1,285 @@
+﻿@model LecOnline.Models.Request.RequestDocumentationViewModel
+@{
+    var isAdmin = this.User.IsInRole(RoleNames.Administrator);
+}
+@if (Model.RequestType == RequestType.PrimaryRequestType)
+{
+    <h3 class="header smaller lighter blue">
+        @Resources.RequestFormDocumentation
+        <small>@Resources.RequestFormDocumentationHint</small>
+    </h3>
+    <div class="form-group">
+        <div class="col-md-12">
+            <ul class="list-unstyled spaced">
+                <li>
+                    <h4>@Resources.FileAllowanceFromMinistryOfHealth</h4>
+                </li>
+                @if (this.Model.AllowanceFromMinistryOfHealth != null)
+                {
+                    @Html.Partial("_DocumentationFileListItem", this.Model.AllowanceFromMinistryOfHealth)
+                }
+                else
+                {
+                    <li>
+                        @Resources.FileAllowanceFromMinistryOfHealthIsMissing
+                    </li>
+                }
+            </ul>
+            <button type="button" class="btn btn-sm" data-toggle="modal" 
+                    data-target="#uploadFilesModal" data-filetype="1">@Resources.UploadDocumentation</button>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12">
+            <ul class="list-unstyled spaced">
+                <li>
+                    <h4>@Resources.FileExcerptFromEthicsProtocol</h4>
+                </li>
+                @if (this.Model.ExcerptFromEthicsProtocol != null)
+                {
+                    @Html.Partial("_DocumentationFileListItem", this.Model.ExcerptFromEthicsProtocol)
+                }
+                else
+                {
+                    <li>
+                        @Resources.FileExcerptFromEthicsProtocolIsMissing
+                    </li>
+                }
+            </ul>
+            <button type="button" class="btn btn-sm" data-toggle="modal"
+                    data-target="#uploadFilesModal" data-filetype="2">
+                @Resources.UploadDocumentation
+            </button>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12">
+            <ul class="list-unstyled spaced">
+                <li>
+                    <h4>@Resources.FileStudyProtocol</h4>
+                </li>
+                @if (this.Model.StudyProtocol != null)
+                {
+                    @Html.Partial("_DocumentationFileListItem", this.Model.StudyProtocol)
+                }
+                else
+                {
+                    <li>
+                        @Resources.FileStudyProtocolIsMissing
+                    </li>
+                }
+            </ul>
+            <button type="button" class="btn btn-sm" data-toggle="modal"
+                    data-target="#uploadFilesModal" data-filetype="3">
+                @Resources.UploadDocumentation
+            </button>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12">
+            <ul class="list-unstyled spaced">
+                <li>
+                    <h4>@Resources.FileResearchBrochure</h4>
+                </li>
+                @if (this.Model.ResearchBrochure != null)
+                {
+                    @Html.Partial("_DocumentationFileListItem", this.Model.ResearchBrochure)
+                }
+                else
+                {
+                    <li>
+                        @Resources.FileResearchBrochureIsMissing
+                    </li>
+                }
+            </ul>
+            <button type="button" class="btn btn-sm" data-toggle="modal"
+                    data-target="#uploadFilesModal" data-filetype="4">
+                @Resources.UploadDocumentation
+            </button>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12">
+            <ul class="list-unstyled spaced">
+                <li>
+                    <h4>@Resources.FileInformedAgreementForm</h4>
+                </li>
+                @if (this.Model.InformedAgreementForm != null)
+                {
+                    @Html.Partial("_DocumentationFileListItem", this.Model.InformedAgreementForm)
+                }
+                else
+                {
+                    <li>
+                        @Resources.FileInformedAgreementFormIsMissing
+                    </li>
+                }
+            </ul>
+            <button type="button" class="btn btn-sm" data-toggle="modal"
+                    data-target="#uploadFilesModal" data-filetype="5">
+                @Resources.UploadDocumentation
+            </button>
+        </div>
+    </div>
+}
+@if (Model.RequestType == RequestType.SecondaryRequest)
+{
+    <h3 class="header smaller lighter blue">
+        @Resources.RequestFormDocumentation
+        <small>@Resources.RequestFormDocumentationHint</small>
+    </h3>
+    <div class="form-group">
+        <div class="col-md-12">
+            <ul class="list-unstyled spaced">
+                <li>
+                    <h4>@Resources.FileAllowanceFromMinistryOfHealth</h4>
+                </li>
+                @if (this.Model.AllowanceFromMinistryOfHealth != null)
+                {
+                    @Html.Partial("_DocumentationFileListItem", this.Model.AllowanceFromMinistryOfHealth)
+                }
+                else
+                {
+                    <li>
+                        @Resources.FileAllowanceFromMinistryOfHealthIsMissing
+                    </li>
+                }
+            </ul>
+            <button type="button" class="btn btn-sm" data-toggle="modal"
+                    data-target="#uploadFilesModal" data-filetype="1">
+                @Resources.UploadDocumentation
+                </button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                <ul class="list-unstyled spaced">
+                    <li>
+                        <h4>@Resources.FileExcerptFromEthicsProtocol</h4>
+                    </li>
+                    @if (this.Model.ExcerptFromEthicsProtocol != null)
+                    {
+                        @Html.Partial("_DocumentationFileListItem", this.Model.ExcerptFromEthicsProtocol)
+                    }
+                    else
+                    {
+                        <li>
+                            @Resources.FileExcerptFromEthicsProtocolIsMissing
+                        </li>
+                    }
+                </ul>
+                <button type="button" class="btn btn-sm" data-toggle="modal"
+                        data-target="#uploadFilesModal" data-filetype="2">
+                    @Resources.UploadDocumentation
+                </button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                <ul class="list-unstyled spaced">
+                    <li>
+                        <h4>@Resources.FileStudyProtocol</h4>
+                    </li>
+                    @if (this.Model.StudyProtocol != null)
+                    {
+                        @Html.Partial("_DocumentationFileListItem", this.Model.StudyProtocol)
+                    }
+                    else
+                    {
+                        <li>
+                            @Resources.FileStudyProtocolIsMissing
+                        </li>
+                    }
+                </ul>
+                <button type="button" class="btn btn-sm" data-toggle="modal"
+                        data-target="#uploadFilesModal" data-filetype="3">
+                    @Resources.UploadDocumentation
+                </button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                <ul class="list-unstyled spaced">
+                    <li>
+                        <h4>@Resources.FileResearchBrochure</h4>
+                    </li>
+                    @if (this.Model.ResearchBrochure != null)
+                    {
+                        @Html.Partial("_DocumentationFileListItem", this.Model.ResearchBrochure)
+                    }
+                    else
+                    {
+                        <li>
+                            @Resources.FileResearchBrochureIsMissing
+                        </li>
+                    }
+                </ul>
+                <button type="button" class="btn btn-sm" data-toggle="modal"
+                        data-target="#uploadFilesModal" data-filetype="4">
+                    @Resources.UploadDocumentation
+                </button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                <ul class="list-unstyled spaced">
+                    <li>
+                        <h4>@Resources.FileInformedAgreementForm</h4>
+                    </li>
+                    @if (this.Model.InformedAgreementForm != null)
+                    {
+                        @Html.Partial("_DocumentationFileListItem", this.Model.InformedAgreementForm)
+                    }
+                    else
+                    {
+                        <li>
+                            @Resources.FileInformedAgreementFormIsMissing
+                        </li>
+                    }
+                </ul>
+                <button type="button" class="btn btn-sm" data-toggle="modal"
+                        data-target="#uploadFilesModal" data-filetype="5">
+                    @Resources.UploadDocumentation
+                </button>
+            </div>
+        </div>
+}
+
+<h3 class="header smaller lighter blue">
+    @Resources.RequestAdditionalFormDocumentation
+    <small>@Resources.RequestAdditionalFormDocumentationHint</small>
+</h3>
+<div class="form-group">
+    <div class="col-md-12">
+        <ul class="list-unstyled spaced">
+            @foreach (var file in this.Model.AdditionalFiles)
+            {
+                <li>
+                    <a class="btn btn-xs btn-primary" href="@Url.Action("DownloadFile", new { id = file.Id })">
+                        <i class="ace-icon fa fa-download bigger-110 icon-only"></i>
+                        @*@Resources.Download*@
+                    </a>
+                    <a class="btn btn-xs btn-danger" href="@Url.Action("DeleteFile", new { id = file.Id })">
+                        <i class="ace-icon fa fa-times bigger-110 icon-only"></i>
+                        @*@Resources.Delete*@
+                    </a>
+                    @file.Name 
+                </li>
+            }
+        </ul>
+        <button type="button" class="btn" data-toggle="modal" data-target="#uploadFilesModal" data-filetype="0">@Resources.UploadDocumentation</button>
+
+        <a class="btn btn-warning" title="@Resources.DocumentationAttachment" href="@Url.Action("SubmissionArchive", new { id = this.Model.Id })" target="_blank">
+            <i class="ace-icon fa fa-inbox  bigger-110"></i>
+            @Resources.DocumentationAttachment
+        </a>
+    </div>
+</div>

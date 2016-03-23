@@ -1,0 +1,70 @@
+﻿@model LecOnline.Models.Request.SetMeetingViewModel
+@section scripts {
+    <script>
+        jQuery(document).ready(function ($) {
+            $('#MeetingDate').datetimepicker({
+                locale: 'ru-RU',
+                format: 'DD.MM.YYYY HH:mm:ss' 
+            }).next().on(ace.click_event, function () {
+                $(this).prev().focus();
+            });
+        });
+    </script>
+}
+<div class="page-header">
+    <h1>
+        @Resources.PageRequestsTitle
+        <small>
+            <i class="ace-icon fa fa-angle-double-right"></i>
+            @Resources.PageAllRequestsTitle
+        </small>
+    </h1>
+</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>@Resources.SetMeeting @(Model.Title)</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.MeetingDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="input-group">
+                    @Html.EditorFor(model => model.MeetingDate, new { htmlAttributes = new { @class = "form-control" } })
+                    <span class="input-group-addon">
+                        <i class="fa fa-clock-o bigger-110"></i>
+                    </span>
+                </div>
+                @Html.ValidationMessageFor(model => model.MeetingDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Members, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ListBoxFor(model => model.Members, Model.AvailableMembers, new { @class = "form-control", multiple = "multiple", size = 10 })
+                @Html.ValidationMessageFor(model => model.Members, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="@Resources.SetMeeting" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink(Resources.BackToList, "Index")
+</div>

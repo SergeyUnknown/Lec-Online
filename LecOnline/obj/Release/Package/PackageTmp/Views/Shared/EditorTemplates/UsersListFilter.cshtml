@@ -1,0 +1,19 @@
+﻿@model LecOnline.Models.User.UsersListFilter
+<div class="form-group">
+    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label" })
+    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+</div>
+@if (Model.FilterClients)
+{
+    <div class="form-group">
+        @Html.LabelFor(model => model.ClientId, htmlAttributes: new { @class = "control-label" })
+        @Html.EditorFor(model => model.ClientId, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+}
+@if (Model.FilterCommittee)
+{
+    <div class="form-group">
+        @Html.LabelFor(model => model.CommitteeId, htmlAttributes: new { @class = "control-label" })
+        @Html.EditorFor(model => model.CommitteeId, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+}

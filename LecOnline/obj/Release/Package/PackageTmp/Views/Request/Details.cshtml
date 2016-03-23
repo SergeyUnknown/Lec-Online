@@ -1,0 +1,47 @@
+﻿@model LecOnline.Models.Request.RequestDetailsViewModel
+@{
+    var context = this.Context.GetOwinContext();
+    var actionsManager = context.Get<ActionsManager>();
+    var sidebarManager = context.Get<SidebarManager>();
+    var userItem = sidebarManager.FindById("Requests");
+    userItem.IsOpen = true;
+    userItem.IsActive = true;
+    var allUserItem = sidebarManager.FindById("Requests.All");
+    allUserItem.IsActive = true;
+
+    var isAdmin = this.User.IsInRole(RoleNames.Administrator);
+}
+<div class="page-header">
+    <h1>
+        @Resources.PageRequestsTitle
+        <small>
+            <i class="ace-icon fa fa-angle-double-right"></i>
+            @Resources.PageAllRequestsTitle
+        </small>
+    </h1>
+</div>
+<div class="form-horizontal">
+    <h4>@Resources.ViewRequest @(Model.BaseInformation.Title)</h4>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-6">
+            @Html.DisplayFor(m => m.BaseInformation)
+        </div>
+
+        <div class="col-md-6">
+            @Html.DisplayFor(m => m.ContactInformation)
+            @Html.DisplayFor(m => m.Documentation)
+            @Html.DisplayFor(m => m.Actions)
+        </div>
+    </div>
+    <div class="row form-actions">
+        <div class="col-md-6">
+            @Html.Partial("_CommandPanel", this.Model.OriginalRequest)
+        </div>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink(Resources.BackToList, "Index")
+</div>

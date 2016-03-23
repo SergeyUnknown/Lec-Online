@@ -1,0 +1,69 @@
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    /*max-width: 280px;*/
+}
+
+.socialLoginForm {
+    display: none;
+}
+
+.navbar-brand.brand-image {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.img-home-page {
+    height: 187px;
+    width: 100%;
+}
+
+/* This should be implemented using ace.less.
+    Colors should be taken from configuration if possible.
+*/
+body.no-skin.login-layout {
+    background: #e4e6e9; 
+}
+
+.no-skin.login-layout .widget-box {
+    background: transparent;
+}
+
+.no-skin.login-layout .login-box .toolbar,
+.no-skin.login-layout .signup-box .toolbar,
+.no-skin.login-layout .forgot-box .toolbar {
+    border-top: none;
+}
+
+/* Meeting room */
+#chat .messages ul {
+    height: 400px; 
+    overflow: auto; 
+}
+
+#chat ul {
+    margin-left: 0;
+    list-style: none;
+}
+
+.col-md-1 .help-button {
+    margin-top: 3px;
+}

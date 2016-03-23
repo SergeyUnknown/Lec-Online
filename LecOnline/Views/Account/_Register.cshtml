@@ -1,0 +1,117 @@
+﻿@using LecOnline.Models.Account
+@model RegisterViewModel
+<div id="signup-box" class="signup-box widget-box no-border @(this.Model.InitiallyVisible ? "visible" : string.Empty)">
+    <div class="widget-body">
+        <div class="widget-main">
+            <h4 class="header green lighter bigger">
+                <i class="ace-icon fa fa-users blue"></i>
+                @Resources.Registration
+            </h4>
+
+            <div class="space-6"></div>
+            <p>@Resources.RegisterANewAccount</p>
+
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <fieldset>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <label class="block clearfix">
+                        <span class="block input-icon input-icon-right">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = Resources.FieldEmail })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                            <i class="ace-icon fa fa-envelope"></i>
+                        </span>
+                    </label>
+
+                    <label class="block clearfix">
+                        <span class="block input-icon input-icon-right">
+                            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = Resources.FieldFirstName })
+                            @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+                            <i class="ace-icon fa fa-user"></i>
+                        </span>
+                    </label>
+
+                    <label class="block clearfix">
+                        <span class="block input-icon input-icon-right">
+                            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = Resources.FieldLastName })
+                            @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+                            <i class="ace-icon fa fa-user"></i>
+                        </span>
+                    </label>
+
+                    <label class="block clearfix">
+                        <span class="block input-icon input-icon-right">
+                            @Html.TextBoxFor(m => m.PatronymicName, new { @class = "form-control", placeholder = Resources.FieldPatronymicName })
+                            @Html.ValidationMessageFor(m => m.PatronymicName, "", new { @class = "text-danger" })
+                            <i class="ace-icon fa fa-user"></i>
+                        </span>
+                    </label>
+
+                    <label class="block clearfix">
+                        <span class="block input-icon input-icon-right">
+                            @Html.TextBoxFor(m => m.Company, new { @class = "form-control", placeholder = Resources.FieldCompany })
+                            @Html.ValidationMessageFor(m => m.Company, "", new { @class = "text-danger" })
+                            <i class="ace-icon fa fa-building"></i>
+                        </span>
+                    </label>
+
+                    <label class="block clearfix">
+                        <span class="block input-icon input-icon-right">
+                            @Html.TextBoxFor(m => m.ContactPhone, new { @class = "form-control", placeholder = Resources.FieldPhone })
+                            @Html.ValidationMessageFor(m => m.ContactPhone, "", new { @class = "text-danger" })
+                            <i class="ace-icon fa fa-phone"></i>
+                        </span>
+                    </label>
+
+                    <label class="block clearfix">
+                        <span class="block input-icon input-icon-right">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = Resources.FieldPassword })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                            <i class="ace-icon fa fa-lock"></i>
+                        </span>
+                    </label>
+
+                    <label class="block clearfix">
+                        <span class="block input-icon input-icon-right">
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = Resources.FieldConfirmPassword })
+                            @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+                            <i class="ace-icon fa fa-retweet"></i>
+                        </span>
+                    </label>
+
+                    <label class="block">
+                        @Html.EditorFor(m => m.UserAgreementAccepted, "SimpleCheckBox", new { @class = "ace" })
+                        <span class="lbl">
+                            @Resources.IAccept
+                            <a href="#">@Resources.UserAgreementAccepts</a>
+                        </span>
+                    </label>
+
+                    <div class="space-24"></div>
+
+                    <div class="clearfix">
+                        <button type="reset" class="width-30 pull-left btn btn-sm">
+                            <i class="ace-icon fa fa-refresh"></i>
+                            <span class="bigger-110">@Resources.Reset</span>
+                        </button>
+
+                        <button type="submit" class="width-65 pull-right btn btn-sm btn-success">
+                            <span class="bigger-110">@Resources.Register</span>
+
+                            <i class="ace-icon fa fa-arrow-right icon-on-right"></i>
+                        </button>
+                    </div>
+                </fieldset>
+            }
+        </div>
+
+        <div class="toolbar center">
+            <a href="#" data-target="#login-box" class="back-to-login-link">
+                <i class="ace-icon fa fa-arrow-left"></i>
+                @Resources.BackToLogin
+            </a>
+        </div>
+    </div><!-- /.widget-body -->
+</div><!-- /.signup-box -->
+

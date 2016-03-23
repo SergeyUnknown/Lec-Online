@@ -1,0 +1,16 @@
+﻿@model Request
+<a class="btn btn-warning btn-xs" title="@Resources.DocumentationAttachment" href="@Url.Action("SubmissionArchive", new { id = Model.Id })" target="_blank">
+    <i class="ace-icon fa fa-inbox  bigger-110 icon-only"></i>
+</a>
+@if ((RequestStatus)this.Model.Status != RequestStatus.Created)
+{
+    <a class="btn btn-primary btn-xs" title="@Resources.DocumentationRequest" href="@Url.Action("DetailsDoc", new { id = Model.Id })" target="_blank">
+        <i class="ace-icon fa fa-file-text bigger-110 icon-only"></i>
+    </a>
+    if ((RequestStatus)this.Model.Status == RequestStatus.Resolved)
+    { 
+    <a class="btn btn-success btn-xs" title="@Resources.DocumentationResolution" href="@Url.Action("ResolutionDoc", new { id = Model.Id })" target="_blank">
+        <i class="ace-icon fa fa-gavel  bigger-110 icon-only"></i>
+    </a>
+    }
+}

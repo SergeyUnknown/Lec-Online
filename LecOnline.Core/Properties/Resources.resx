@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ActionAccept" xml:space="preserve">
+    <value>Принять</value>
+  </data>
+  <data name="ActionAcceptMeeting" xml:space="preserve">
+    <value>Буду участвовать</value>
+  </data>
+  <data name="ActionActivate" xml:space="preserve">
+    <value>Активировать</value>
+  </data>
+  <data name="ActionCreateNotification" xml:space="preserve">
+    <value>Уведомление</value>
+  </data>
+  <data name="ActionCreateSecondary" xml:space="preserve">
+    <value>Вторичная подача</value>
+  </data>
+  <data name="ActionDeactivate" xml:space="preserve">
+    <value>Деактивировать</value>
+  </data>
+  <data name="ActionDeclineMeeting" xml:space="preserve">
+    <value>Не буду участвовать</value>
+  </data>
+  <data name="ActionDelete" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="ActionDetails" xml:space="preserve">
+    <value>Подробнее</value>
+  </data>
+  <data name="ActionEdit" xml:space="preserve">
+    <value>Изменить</value>
+  </data>
+  <data name="ActionEnterMeetingResolution" xml:space="preserve">
+    <value>Вынести решение</value>
+  </data>
+  <data name="ActionFinishMeeting" xml:space="preserve">
+    <value>Завершить совещание</value>
+  </data>
+  <data name="ActionMeetingRoom" xml:space="preserve">
+    <value>Совещание</value>
+  </data>
+  <data name="ActionPasswordReset" xml:space="preserve">
+    <value>Сброс пароля</value>
+  </data>
+  <data name="ActionReject" xml:space="preserve">
+    <value>Отклонить</value>
+  </data>
+  <data name="ActionRevoke" xml:space="preserve">
+    <value>Отозвать</value>
+  </data>
+  <data name="ActionSetMeeting" xml:space="preserve">
+    <value>Назначить совещание</value>
+  </data>
+  <data name="ActionStartMeeting" xml:space="preserve">
+    <value>Начать совещание</value>
+  </data>
+  <data name="ActionStartVoting" xml:space="preserve">
+    <value>Начать голосование</value>
+  </data>
+  <data name="ActionStopMeeting" xml:space="preserve">
+    <value>Остановить совещание</value>
+  </data>
+  <data name="ActionSubmit" xml:space="preserve">
+    <value>Подать заявку</value>
+  </data>
+  <data name="ActionViewAttendees" xml:space="preserve">
+    <value>Участники</value>
+  </data>
+  <data name="ActionViewRequestHistory" xml:space="preserve">
+    <value>История</value>
+  </data>
+  <data name="MailErrorFailedToSendEmail" xml:space="preserve">
+    <value>Ошибка отправки email</value>
+  </data>
+  <data name="MailMeetingSetupBody" xml:space="preserve">
+    <value>Для заявки '{0}' назначено совещание.
+
+Дата проведения: {1:d}
+Время проведения: {1:t}
+Ссылка: {2}</value>
+  </data>
+  <data name="MailMeetingSetupSubject" xml:space="preserve">
+    <value>Назначено совещание</value>
+  </data>
+  <data name="MailNoReplyUser" xml:space="preserve">
+    <value>Автоматическая система уведомлений</value>
+  </data>
+  <data name="MailRequestAcceptedBody" xml:space="preserve">
+    <value>Запрос '{0}' принят на рассмотрение.</value>
+  </data>
+  <data name="MailRequestAcceptedSubject" xml:space="preserve">
+    <value>Ваш запрос принят</value>
+  </data>
+  <data name="MailRequestRejectedBody" xml:space="preserve">
+    <value>Запрос '{0}' отклонен.
+
+Причина отклонения: {1}</value>
+  </data>
+  <data name="MailRequestRejectedSubject" xml:space="preserve">
+    <value>Ваш запрос отклонен</value>
+  </data>
+  <data name="MailRequestResolutionMadeBody" xml:space="preserve">
+    <value>Ваша заявка '{0}' была обработана.
+
+Решение комитета: {1}
+Узнать подробную информацию и скачать решение комитета вы можете по ссылке {2}</value>
+  </data>
+  <data name="MailRequestResolutionMadeSubject" xml:space="preserve">
+    <value>Решение по заявке</value>
+  </data>
+  <data name="MailRequestSubmittedBody" xml:space="preserve">
+    <value>Получена новая заявка '{0}'</value>
+  </data>
+  <data name="MailRequestSubmittedSubject" xml:space="preserve">
+    <value>Получена новая заявка</value>
+  </data>
+  <data name="MeetingVotingStarted" xml:space="preserve">
+    <value>Началось голосование:
+Совещание №{0} по заявке №{1}, '{2}'</value>
+  </data>
+  <data name="RequestAccepted" xml:space="preserve">
+    <value>Запрос принят к обработке: 
+{0}</value>
+  </data>
+  <data name="RequestChanged" xml:space="preserve">
+    <value>Данные о заявке изменены: 
+{0}</value>
+  </data>
+  <data name="RequestCreated" xml:space="preserve">
+    <value>Добавлены данные о заявке: 
+{0}</value>
+  </data>
+  <data name="RequestDeleted" xml:space="preserve">
+    <value>Данные о заявке удалены,прошлые данные о заявке до удаления: 
+{0}</value>
+  </data>
+  <data name="RequestDocumentationCreated" xml:space="preserve">
+    <value>Загружена документация:
+Заявка №{0}, '{1}'
+{2}</value>
+  </data>
+  <data name="RequestDocumentationDeleted" xml:space="preserve">
+    <value>Удалена документация:
+Заявка №{0}, '{1}'
+{2}</value>
+  </data>
+  <data name="RequestRejected" xml:space="preserve">
+    <value>Запрос отклонен: 
+{0}</value>
+  </data>
+  <data name="RequestRevoked" xml:space="preserve">
+    <value>Запрос отозван: 
+{0}</value>
+  </data>
+  <data name="RequestSubmitted" xml:space="preserve">
+    <value>Запрос отправлен в ЛЭК: 
+{0}</value>
+  </data>
+  <data name="SidebarDashboard" xml:space="preserve">
+    <value>Кабинет</value>
+  </data>
+  <data name="SidebarMedicalCenters" xml:space="preserve">
+    <value>Медцентры</value>
+  </data>
+  <data name="SidebarRequests" xml:space="preserve">
+    <value>Заявки</value>
+  </data>
+  <data name="SidebarSecurity" xml:space="preserve">
+    <value>Безопасность</value>
+  </data>
+  <data name="SidebarSettings" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="SidebarUsers" xml:space="preserve">
+    <value>Пользователи</value>
+  </data>
+  <data name="StudyAccepted" xml:space="preserve">
+    <value>Исследование разрешено</value>
+  </data>
+  <data name="StudyRejected" xml:space="preserve">
+    <value>Исследование отклонено</value>
+  </data>
+</root>

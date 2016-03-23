@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - LEC online</title>
+    @*@Scripts.Render("~/bundles/modernizr")*@
+
+
+    <link rel="stylesheet" href="/Content/Ace/css/bootstrap.css" />
+    <link rel="stylesheet" href="/Content/Ace/css/font-awesome.css" />
+
+    <!-- text fonts -->
+    <link rel="stylesheet" href="/Content/Ace/css/ace-fonts.css" />
+
+    <!-- ace styles -->
+    <link rel="stylesheet" href="/Content/Ace/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/Content/Ace/css/ace-part2.css" />
+    <![endif]-->
+    <link rel="stylesheet" href="/Content/Ace/css/ace-rtl.css" />
+
+    <!--[if lte IE 9]>
+      <link rel="stylesheet" href="/Content/Ace/css/ace-ie.css" />
+    <![endif]-->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/Content/Ace/js/html5shiv.js"></script>
+    <script src="/Content/Ace/js/respond.js"></script>
+    <![endif]-->
+    @Styles.Render("~/Content/css")
+</head>
+<body class="no-skin login-layout">
+    @Html.Partial("_Navbar")
+    <div class="main-container">
+        <div class="main-content">
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <div class="login-container">
+                        @*<div class="center">
+                            <h1>
+                                <i class="ace-icon fa fa-leaf green"></i>
+                                <span class="red">LEC</span>
+                                <span class="white" id="id-text2">Online</span>
+                            </h1>
+                            <h4 class="blue" id="id-company-text">&copy; Company Name</h4>
+                        </div>*@
+
+                        <div class="space-6"></div>
+
+                        <div class="position-relative">
+                            @RenderBody()
+                            
+                        </div><!-- /.position-relative -->
+
+                    </div>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.main-content -->
+    </div><!-- /.main-container -->
+    @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")*@
+    <!--[if !IE]> -->
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='/Content/Ace/js/jquery.js'>" + "<" + "/script>");
+    </script>
+
+    <!-- <![endif]-->
+    <!--[if IE]>
+    <script type="text/javascript">
+     window.jQuery || document.write("<script src='/Content/Ace/js/jquery1x.js'>"+"<"+"/script>");
+    </script>
+    <![endif]-->
+    <script type="text/javascript">
+        if ('ontouchstart' in document.documentElement) document.write("<script src='/Content/Ace/js/jquery.mobile.custom.js'>" + "<" + "/script>");
+    </script>
+    <script src="/Content/Ace/js/bootstrap.js"></script>
+
+    <!-- page specific plugin scripts -->
+    <!--[if lte IE 8]>
+      <script src="/Content/Ace/js/excanvas.js"></script>
+    <![endif]-->
+    <!-- inline scripts related to this page -->
+    <script type="text/javascript">
+        jQuery(function ($) {
+            $(document).on('click', '.toolbar a[data-target]', function (e) {
+                e.preventDefault();
+                var target = $(this).data('target');
+                $('.widget-box.visible').removeClass('visible');//hide others
+                $(target).addClass('visible');//show target
+            });
+        });
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

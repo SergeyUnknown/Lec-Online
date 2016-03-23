@@ -1,0 +1,6 @@
+﻿@model byte
+@{
+    var status = (AttendanceStatus)this.Model;
+    var statusString = AttendanceStatusStrings.ResourceManager.GetString(status.ToString());
+}
+@statusString

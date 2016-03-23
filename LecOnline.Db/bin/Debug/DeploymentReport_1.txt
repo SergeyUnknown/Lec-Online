@@ -1,0 +1,75 @@
+﻿** Выделение
+     Таблицы, которые будут перестроены
+       Нет
+     Кластеризованные индексы, которые будут удалены
+       Нет
+     Кластеризованные индексы, которые будут созданы
+       Нет
+     Возможные проблемы, связанные с данными
+       Нет
+
+** Действия пользователя
+     Создать
+       [dbo].[AspNetRoles] (Таблица)
+       [dbo].[AspNetUserLogins] (Таблица)
+       [dbo].[AspNetUserLogins].[IX_UserLogin_UserID] (Индекс)
+       [dbo].[AspNetUserRoles] (Таблица)
+       [dbo].[AspNetUserRoles].[IX_AspNetUserRoles_UserID] (Индекс)
+       [dbo].[AspNetUserRoles].[IX_AspNetUserRoles_RoleID] (Индекс)
+       [dbo].[AspNetUsers] (Таблица)
+       [dbo].[AttendanceStatuses] (Таблица)
+       [dbo].[ChangesLog] (Таблица)
+       [dbo].[Clients] (Таблица)
+       [dbo].[Committees] (Таблица)
+       [dbo].[Configuration] (Таблица)
+       [dbo].[ErrorLog] (Таблица)
+       [dbo].[MeetingAttendees] (Таблица)
+       [dbo].[MeetingChatMessages] (Таблица)
+       [dbo].[Meetings] (Таблица)
+       [dbo].[RequestActions] (Таблица)
+       [dbo].[RequestDocumentations] (Таблица)
+       [dbo].[Requests] (Таблица)
+       [dbo].[RequestStatuses] (Таблица)
+       [dbo].[StudyTypes] (Таблица)
+       Ограничение по умолчанию: ограничение без названия для [dbo].[AspNetUsers] (Ограничение по умолчанию)
+       Ограничение по умолчанию: ограничение без названия для [dbo].[AspNetUsers] (Ограничение по умолчанию)
+       Ограничение по умолчанию: ограничение без названия для [dbo].[ErrorLog] (Ограничение по умолчанию)
+       Ограничение по умолчанию: ограничение без названия для [dbo].[Meetings] (Ограничение по умолчанию)
+       Ограничение по умолчанию: ограничение без названия для [dbo].[Meetings] (Ограничение по умолчанию)
+       Ограничение по умолчанию: ограничение без названия для [dbo].[RequestActions] (Ограничение по умолчанию)
+       Ограничение по умолчанию: ограничение без названия для [dbo].[RequestDocumentations] (Ограничение по умолчанию)
+       Ограничение по умолчанию: ограничение без названия для [dbo].[Requests] (Ограничение по умолчанию)
+       Ограничение по умолчанию: ограничение без названия для [dbo].[Requests] (Ограничение по умолчанию)
+       Ограничение по умолчанию: ограничение без названия для [dbo].[Requests] (Ограничение по умолчанию)
+       Ограничение по умолчанию: ограничение без названия для [dbo].[Requests] (Ограничение по умолчанию)
+       [dbo].[FK_AspNetUserLogins_User] (Внешний ключ)
+       [dbo].[FK_AspNetUserRoles_User] (Внешний ключ)
+       [dbo].[FK_AspNetUserRoles_UserRole] (Внешний ключ)
+       [dbo].[FK_AspNetUsers_ToClients] (Внешний ключ)
+       [dbo].[FK_AspNetUsers_ToCommittees] (Внешний ключ)
+       [dbo].[FK_Committees_ToAspNetUsers_Chariman] (Внешний ключ)
+       [dbo].[FK_Committees_ToAspNetUsers_ViceChariman] (Внешний ключ)
+       [dbo].[FK_Committees_ToAspNetUsers_Secretary] (Внешний ключ)
+       [dbo].[FK_MeetingAttendees_ToMeetings] (Внешний ключ)
+       [dbo].[FK_MeetingAttendees_ToAspNetUsers] (Внешний ключ)
+       [dbo].[FK_MeetingChatMessages_ToMeetings] (Внешний ключ)
+       [dbo].[FK_MeetingChatMessages_ToAspNetUsers] (Внешний ключ)
+       [dbo].[FK_Meetings_ToRequests] (Внешний ключ)
+       [dbo].[FK_RequestActions_ToRequest] (Внешний ключ)
+       [dbo].[FK_RequestDocumentations_ToRequests] (Внешний ключ)
+       [dbo].[FK_RequestDocumentations_ToUsers_CreatedBy] (Внешний ключ)
+       [dbo].[FK_RequestDocumentations_ToUsers_SignedBy] (Внешний ключ)
+       [dbo].[FK_Request_ToClients] (Внешний ключ)
+       [dbo].[FK_Request_ToCommittees] (Внешний ключ)
+       [dbo].[FK_Request_ToUsers_CreatedBy] (Внешний ключ)
+       [dbo].[FK_Request_ToUsers_AcceptedBy] (Внешний ключ)
+       [dbo].[FK_Request_ToUsers_SubmittedBy] (Внешний ключ)
+       [dbo].[FK_Request_ToRequests_BaseRequestId] (Внешний ключ)
+       [dbo].[FK_AspNetUserClaims_User] (Внешний ключ)
+       [dbo].[CK_AspNetUsers_ClientOrCommittee] (Проверочное ограничение)
+       [dbo].[CK_Request_CentersQty] (Проверочное ограничение)
+
+** Корректирующие действия
+
+Определены различные параметры сортировки для проекта и конечных баз данных. Возможны ошибки развертывания.
+

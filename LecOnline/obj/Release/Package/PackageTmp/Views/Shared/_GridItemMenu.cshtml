@@ -1,0 +1,46 @@
+﻿@using Microsoft.AspNet.Identity.Owin
+@model object
+@{
+    var context = this.Context.GetOwinContext();
+    var actionManager = context.Get<ActionsManager>();
+    var actions = actionManager.GetActions(this.Model);
+    var sortedActions = actions.Where(_ => !_.NotItemOperation)
+        .OrderBy(_ => _.SortOrder)
+        .ToList();
+    var itemsCount = sortedActions.Count;
+}
+<div class="hidden-sm hidden-xs btn-group">
+    @foreach (var actionDescription in sortedActions)
+    {
+        <a class="btn btn-xs btn-@actionDescription.CssClass" href="@Url.Action(actionDescription.Action, actionDescription.Controller, actionDescription.RouteParameters)">
+            <i class="ace-icon fa @actionDescription.Icon bigger-120"></i>
+            @actionDescription.Text
+        </a>
+    }
+</div>
+@if (itemsCount > 0)
+{
+<div class="hidden-md hidden-lg">
+    <div class="inline position-relative">
+        <button class="btn btn-minier btn-primary dropdown-toggle" 
+                data-toggle="dropdown" data-position="auto">
+            <i class="ace-icon fa fa-cog icon-only bigger-110"></i>
+        </button>
+
+        <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+            @foreach (var actionDescription in sortedActions)
+            {
+                <li>
+                    <a href="@Url.Action(actionDescription.Action, actionDescription.Controller, actionDescription.RouteParameters)" 
+                       class="tooltip-@actionDescription.CssClass"
+                       data-rel="tooltip" title="" data-original-title="@actionDescription.Text">
+                        <span class="@actionDescription.SmallCssClass">
+                            <i class="ace-icon fa @actionDescription.Icon bigger-120"></i>
+                        </span>
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+}

@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>LecOnline.Db</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{1514ec0e-0bbd-4610-bce0-d23cb6c50d6f}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.SqlAzureDatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>LecOnline.Db</RootNamespace>
+    <AssemblyName>LecOnline.Db</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DacVersion>1.0.1.0</DacVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Tables" />
+    <Folder Include="Scripts" />
+    <Folder Include="Scripts\ReferenceData" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Tables\Configuration.sql" />
+    <Build Include="Tables\AspNetUsers.sql" />
+    <Build Include="Tables\AspNetRoles.sql" />
+    <Build Include="Tables\AspNetUserLogins.sql" />
+    <Build Include="Tables\AspNetUserClaims.sql" />
+    <Build Include="Tables\AspNetUserRoles.sql" />
+    <Build Include="Tables\Requests.sql" />
+    <Build Include="Tables\Meetings.sql" />
+    <Build Include="Tables\RequestDocumentations.sql" />
+    <Build Include="Tables\Clients.sql" />
+    <Build Include="Tables\Committees.sql" />
+    <Build Include="Tables\ErrorLog.sql" />
+    <Build Include="Tables\StudyTypes.sql" />
+    <Build Include="Tables\RequestStatuses.sql" />
+    <Build Include="Tables\MeetingAttendees.sql" />
+    <Build Include="Tables\AttendanceStatuses.sql" />
+    <None Include="Scripts\ReferenceData\AttendanceStatuses.sql" />
+    <Build Include="Tables\ChangesLog.sql" />
+    <Build Include="Tables\ObjectTypes.sql" />
+    <Build Include="Tables\MeetingChatMessages.sql" />
+    <Build Include="Tables\RequestActions.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Scripts\Script.PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\ReferenceData\AspNetUsers.sql" />
+    <None Include="Scripts\ReferenceData\AspNetRoles.sql" />
+    <None Include="Scripts\ReferenceData\AspNetUserRoles.sql" />
+    <None Include="Development.publish.xml" />
+    <None Include="Staging.publish.xml" />
+    <None Include="Scripts\ReferenceData\Clients.sql" />
+    <None Include="Scripts\ReferenceData\Commitees.sql" />
+    <None Include="Scripts\ReferenceData\StudyTypes.sql" />
+    <None Include="Scripts\ReferenceData\Requests.sql" />
+    <None Include="Scripts\ReferenceData\RequestStatuses.sql" />
+    <None Include="Scripts\ReferenceData\ObjectTypes.sql" />
+    <None Include="Scripts\ReferenceData\Meetings.sql" />
+    <None Include="Scripts\ReferenceData\MeetingAttendees.sql" />
+    <None Include="Scripts\ReferenceData\AdminUser.sql" />
+    <None Include="Scripts\ReferenceData\Committees-Membership.sql" />
+    <None Include="CleanInstall.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="TestData">
+      <DefaultValue>0</DefaultValue>
+      <Value>$(SqlCmdVar__1)</Value>
+    </SqlCmdVariable>
+  </ItemGroup>
+</Project>

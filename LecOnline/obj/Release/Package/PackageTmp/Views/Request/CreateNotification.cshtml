@@ -1,0 +1,69 @@
+﻿@model LecOnline.Models.Request.CreateSecondaryRequestViewModel
+@{
+    var context = this.Context.GetOwinContext();
+    var actionsManager = context.Get<ActionsManager>();
+    var sidebarManager = context.Get<SidebarManager>();
+    var userItem = sidebarManager.FindById("Requests");
+    userItem.IsOpen = true;
+    userItem.IsActive = true;
+    var allUserItem = sidebarManager.FindById("Requests.All");
+    allUserItem.IsActive = true;
+}
+<div class="page-header">
+    <h1>
+        @Resources.PageRequestsTitle
+        <small>
+            <i class="ace-icon fa fa-angle-double-right"></i>
+            @Resources.PageAllRequestsTitle
+        </small>
+    </h1>
+</div>
+@using (Html.BeginForm("CreateNotification", "Request", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>@Resources.CreateNotificationRequest</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="alert alert-block alert-warning">
+            <button type="button" class="close" data-dismiss="alert">
+                <i class="ace-icon fa fa-times"></i>
+            </button>
+            <i class="ace-icon fa fa-exclamation-circle warning"></i>
+            @Resources.UploadingIsAvailableOnEditPage
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                @Html.DisplayFor(m => m.BaseInformation)
+            </div>
+
+            <div class="col-md-6">
+                @Html.DisplayFor(m => m.ContactInformation)
+            </div>
+        </div>
+        <div class="row form-actions">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <label class="inline">
+                            @Html.EditorFor(m => m.ContinuteToEditPage, "SimpleCheckBox", new { @class = "ace" })
+                            <span class="lbl"> @Html.DisplayNameFor(m => m.ContinuteToEditPage)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="@Resources.Create" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink(Resources.BackToList, "Index")
+</div>

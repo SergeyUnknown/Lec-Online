@@ -1,0 +1,38 @@
+﻿@model LecOnline.Models.Request.RequestActionsViewModel
+@{
+    var isAdmin = this.User.IsInRole(RoleNames.Administrator);
+    var grid = new WebGrid(this.Model.Actions,
+        rowsPerPage: 1000,
+        defaultSort: "ActionDate");
+
+    grid.SortDirection = SortDirection.Descending;
+}
+<h3 class="header smaller lighter blue">
+    @Resources.RequestFormActions
+    <small>@Resources.RequestFormActionsHint</small>
+</h3>
+<div class="form-group">
+    <div class="col-md-12">
+        <table class="table table-striped table-bordered table-hover dataTable">
+            <thead>
+                <tr>
+                    <th class="sorting">@Resources.FieldActionDate</th>
+                    <th class="sorting">@Resources.FieldActionDescription</th>
+                    <th class="sorting">@Resources.FieldActionUser</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var userRow in grid.Rows)
+                {
+                    LecOnline.Core.RequestAction requestAction = userRow.Value;
+                    <tr>
+                        <td>@requestAction.ActionDate</td>
+                        <td>@requestAction.Description</td>
+                        <td>@Html.Partial("_UserByEmail", requestAction.UserName)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

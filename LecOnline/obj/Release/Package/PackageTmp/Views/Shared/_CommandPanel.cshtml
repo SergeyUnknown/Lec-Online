@@ -1,0 +1,20 @@
+﻿@model object
+@{
+    var context = this.Context.GetOwinContext();
+    var actionManager = context.Get<ActionsManager>();
+    var actions = actionManager.GetActions(this.Model);
+    var sortedActions = actions.Where(_ => !_.NotItemOperation)
+        .OrderBy(_ => _.SortOrder)
+        .ToList();
+}
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        @foreach (var actionDescription in sortedActions)
+        {
+            <a class="btn btn-@actionDescription.CssClass" href="@Url.Action(actionDescription.Action, actionDescription.Controller, actionDescription.RouteParameters)">
+                <i class="ace-icon fa @actionDescription.Icon bigger-120"></i>
+                @actionDescription.Text
+            </a>
+        }
+    </div>
+</div>

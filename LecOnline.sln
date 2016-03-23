@@ -1,0 +1,78 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LecOnline", "LecOnline\LecOnline.csproj", "{0AC24873-5F62-41BE-A155-F4B84EFEACF5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LecOnline.Tests", "LecOnline.Tests\LecOnline.Tests.csproj", "{18A95165-3EF2-4FF4-9070-AB0F187023C6}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "LecOnline.Db", "LecOnline.Db\LecOnline.Db.sqlproj", "{1514EC0E-0BBD-4610-BCE0-D23CB6C50D6F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{C5F3C55F-DF25-438F-974D-AD118F7FEE77}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{F5110C7F-FE6F-4582-829B-0E8B3B801AA8}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E88E3596-9A55-4FFF-A962-E4462A104432}"
+	ProjectSection(SolutionItems) = preProject
+		CommonAssemblyInfo.cs = CommonAssemblyInfo.cs
+		Settings.StyleCop = Settings.StyleCop
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LecOnline.Core", "LecOnline.Core\LecOnline.Core.csproj", "{656A59AF-23D4-4D80-9094-FEA9CBB5D135}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LecOnline.Core.Tests", "LecOnline.Core.Tests\LecOnline.Core.Tests.csproj", "{58D001E5-4B1A-4840-9D31-38ED85A873D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LecOnline.Reporting", "LecOnline.Reporting\LecOnline.Reporting.csproj", "{D9127162-4476-4CDD-B575-D8789DDD425F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LecOnline.Acceptance.Tests", "LecOnline.Acceptance.Tests\LecOnline.Acceptance.Tests.csproj", "{DC5DC3F2-C0C7-4774-9918-963DEAC87823}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0AC24873-5F62-41BE-A155-F4B84EFEACF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AC24873-5F62-41BE-A155-F4B84EFEACF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AC24873-5F62-41BE-A155-F4B84EFEACF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AC24873-5F62-41BE-A155-F4B84EFEACF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18A95165-3EF2-4FF4-9070-AB0F187023C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18A95165-3EF2-4FF4-9070-AB0F187023C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18A95165-3EF2-4FF4-9070-AB0F187023C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18A95165-3EF2-4FF4-9070-AB0F187023C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1514EC0E-0BBD-4610-BCE0-D23CB6C50D6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1514EC0E-0BBD-4610-BCE0-D23CB6C50D6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1514EC0E-0BBD-4610-BCE0-D23CB6C50D6F}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{1514EC0E-0BBD-4610-BCE0-D23CB6C50D6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1514EC0E-0BBD-4610-BCE0-D23CB6C50D6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1514EC0E-0BBD-4610-BCE0-D23CB6C50D6F}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{656A59AF-23D4-4D80-9094-FEA9CBB5D135}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{656A59AF-23D4-4D80-9094-FEA9CBB5D135}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{656A59AF-23D4-4D80-9094-FEA9CBB5D135}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{656A59AF-23D4-4D80-9094-FEA9CBB5D135}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58D001E5-4B1A-4840-9D31-38ED85A873D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58D001E5-4B1A-4840-9D31-38ED85A873D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58D001E5-4B1A-4840-9D31-38ED85A873D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58D001E5-4B1A-4840-9D31-38ED85A873D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9127162-4476-4CDD-B575-D8789DDD425F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9127162-4476-4CDD-B575-D8789DDD425F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9127162-4476-4CDD-B575-D8789DDD425F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9127162-4476-4CDD-B575-D8789DDD425F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC5DC3F2-C0C7-4774-9918-963DEAC87823}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC5DC3F2-C0C7-4774-9918-963DEAC87823}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC5DC3F2-C0C7-4774-9918-963DEAC87823}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC5DC3F2-C0C7-4774-9918-963DEAC87823}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
