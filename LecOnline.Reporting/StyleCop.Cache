@@ -7,7 +7,7 @@
     <configuration>TRACE</configuration>
   </project>
   <project key="545791790">
-    <configuration>TRACE</configuration>
+    <configuration>DEBUG;TRACE</configuration>
   </project>
   <sourcecode name="CommonAssemblyInfo.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>

@@ -13,7 +13,7 @@
 	InternationStudies nvarchar(max) NULL,
 	StudyCode nvarchar(20) NULL,
 	StudyType int null,
-	StudyPhase int not null default(1),
+	StudyPhase NVARCHAR(50) null ,
 	CentersQty int not null,
 	LocalCentersQty int not null default(0),
 	PlannedDuration int not null,

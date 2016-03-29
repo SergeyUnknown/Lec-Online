@@ -70,3 +70,4 @@ D:\Repos\GitHub\Lec-Online\LecOnline.Tests\bin\Debug\de\PdfSharp.Charting-WPF.re
 D:\Repos\GitHub\Lec-Online\LecOnline.Tests\obj\Debug\LecOnline.Tests.csprojResolveAssemblyReference.cache
 D:\Repos\GitHub\Lec-Online\LecOnline.Tests\obj\Debug\LecOnline.Tests.dll
 D:\Repos\GitHub\Lec-Online\LecOnline.Tests\obj\Debug\LecOnline.Tests.pdb
+D:\Repos\GitHub\Lec-Online\LecOnline.Tests\bin\Debug\AutoMapper.Net4.dll

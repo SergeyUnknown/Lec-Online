@@ -8,3 +8,7 @@ D:\Repos\GitHub\Lec-Online\LecOnline.Db\bin\Debug\LecOnline.Db.dll
 D:\Repos\GitHub\Lec-Online\LecOnline.Db\bin\Debug\LecOnline.Db.pdb
 D:\Repos\GitHub\Lec-Online\LecOnline.Db\obj\Debug\LecOnline.Db.dll
 D:\Repos\GitHub\Lec-Online\LecOnline.Db\obj\Debug\LecOnline.Db.pdb
+D:\Repos\GitHub\Lec-Online\LecOnline.Db\obj\Debug\Model.xml
+D:\Repos\GitHub\Lec-Online\LecOnline.Db\obj\Debug\refactor.xml
+D:\Repos\GitHub\Lec-Online\LecOnline.Db\obj\Debug\postdeploy.sql
+D:\Repos\GitHub\Lec-Online\LecOnline.Db\obj\Debug\predeploy.sql

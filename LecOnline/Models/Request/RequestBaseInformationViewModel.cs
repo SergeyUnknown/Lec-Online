@@ -101,9 +101,8 @@ namespace LecOnline.Models.Request
         [Required(ErrorMessageResourceName = "ValidationMessageRequired", ErrorMessageResourceType = typeof(Resources), ErrorMessage = null)]
         [Display(Name = "FieldStudyPhase", ResourceType = typeof(Resources))]
         [HelpPopup(HelpText = "HelpTextStudyPhase", ResourceType = typeof(Resources))]
-        [Range(1, 4, ErrorMessageResourceName = "ValidationMessageRange", ErrorMessageResourceType = typeof(Resources), ErrorMessage = null)]
         [UIHint("StudyPhase")]
-        public int StudyPhase { get; set; }
+        public string StudyPhase { get; set; }
 
         /// <summary>
         /// Gets or sets count of centers in which study performed.
